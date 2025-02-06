@@ -231,7 +231,7 @@
         {{ 'icon-mail.svg' | inline_asset_content }}
       </div>
       <div class="section_header-take-quiz6">
-        
+        <a href="{{ section.settings.quiz-url }}">{{ section.settings.quiz-btn }}</a>
       </div>
     </div>
       {%- if shop.customer_accounts_enabled -%}
@@ -609,6 +609,21 @@
       "id":"btn_title",
       "label":"Toggle Button Title",
       "default":"Men"
+    },
+    {
+      "type":"header",
+      "content":"Quiz Button"
+    },
+    {
+      "type":"text",
+      "id":"quiz-btn",
+      "label":"Quiz Button Title",
+      "default":"Take The Quiz"
+    },
+    {
+      "type":"url",
+      "id":"quiz-url",
+      "label":"Quiz Url"
     },
     {
       "type": "header",

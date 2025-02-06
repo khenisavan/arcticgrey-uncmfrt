@@ -13,10 +13,46 @@
   "sections": {
     "footer": {
       "type": "footer",
+      "blocks": {
+        "link_list_PzrRm4": {
+          "type": "link_list",
+          "settings": {
+            "heading": "About Us",
+            "menu": "footer"
+          }
+        },
+        "link_list_Q8N3hV": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Support",
+            "menu": "customer-account-main-menu"
+          }
+        },
+        "link_list_Jc8CxX": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Important Link",
+            "menu": "important-link"
+          }
+        },
+        "text_cb7GbP": {
+          "type": "text",
+          "settings": {
+            "heading": "Contact Us",
+            "subtext": "<p>Let Us Help You<br/><strong>(888) 860-0572</strong></p>"
+          }
+        }
+      },
+      "block_order": [
+        "link_list_PzrRm4",
+        "link_list_Q8N3hV",
+        "link_list_Jc8CxX",
+        "text_cb7GbP"
+      ],
       "settings": {
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-2",
         "newsletter_enable": true,
-        "newsletter_heading": "Subscribe to our emails",
+        "newsletter_heading": "Be a Part of Our Journey",
         "enable_follow_on_shop": true,
         "show_social": true,
         "enable_country_selector": true,
