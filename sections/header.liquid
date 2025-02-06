@@ -224,8 +224,16 @@
           </localization-form>
         {%- endif -%}
       </div>
-      {% render 'header-search', input_id: 'Search-In-Modal' %}
-
+     
+    <div class="section_header-male-button">
+      <div class="srction_header-male-toggle">
+        {{ section.settings.btn_title }}
+        {{ 'icon-mail.svg' | inline_asset_content }}
+      </div>
+      <div class="section_header-take-quiz6">
+        
+      </div>
+    </div>
       {%- if shop.customer_accounts_enabled -%}
         <a
           href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
@@ -441,7 +449,7 @@
 {% schema %}
 {
   "name": "t:sections.header.name",
-  "class": "section-header",
+  "class": "section-header page-width",
   "max_blocks": 3,
   "settings": [
     {
@@ -597,6 +605,12 @@
       "label": "t:sections.header.settings.mobile_logo_position.label"
     },
     {
+      "type":"text",
+      "id":"btn_title",
+      "label":"Toggle Button Title",
+      "default":"Men"
+    },
+    {
       "type": "header",
       "content": "t:sections.all.spacing"
     },
@@ -619,7 +633,7 @@
       "id": "padding_top",
       "min": 0,
       "max": 36,
-      "step": 4,
+      "step": 1,
       "unit": "px",
       "label": "t:sections.all.padding.padding_top",
       "default": 20
@@ -629,7 +643,7 @@
       "id": "padding_bottom",
       "min": 0,
       "max": 36,
-      "step": 4,
+      "step": 1,
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 20
