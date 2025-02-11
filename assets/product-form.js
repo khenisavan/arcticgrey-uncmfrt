@@ -19,6 +19,8 @@ if (!customElements.get('product-form')) {
 
       onSubmitHandler(evt) {
         evt.preventDefault();
+        const closestParent = this.closest(".card-product-hover--content") || this.closest("product-info");
+        const datasetType = closestParent ? closestParent.querySelector(".card-sub-box.active").dataset.type : document.querySelector(".card-sub-box.active").dataset.type;
         if (this.submitButton.getAttribute('aria-disabled') === 'true') return;
 
         this.handleErrorMessage();
@@ -31,73 +33,166 @@ if (!customElements.get('product-form')) {
         config.headers['X-Requested-With'] = 'XMLHttpRequest';
         delete config.headers['Content-Type'];
 
-        const formData = new FormData(this.form);
-        if (this.cart) {
-          formData.append(
-            'sections',
-            this.cart.getSectionsToRender().map((section) => section.id)
-          );
-          formData.append('sections_url', window.location.pathname);
-          this.cart.setActiveElement(document.activeElement);
-        }
-        config.body = formData;
-
-        fetch(`${routes.cart_add_url}`, config)
-          .then((response) => response.json())
-          .then((response) => {
-            if (response.status) {
-              publish(PUB_SUB_EVENTS.cartError, {
-                source: 'product-form',
-                productVariantId: formData.get('id'),
-                errors: response.errors || response.description,
-                message: response.message,
+        let formData = new FormData(this.form);
+        let closestQuickView = this.closest("quick-add-modal");
+        let variantData = [];
+        if(closestQuickView){
+          closestQuickView.querySelectorAll("[name='qty'][variant-id]").forEach(function (input) {
+              variantData.push({
+                  'id': Number(input.getAttribute('variant-id')),
+                  'quantity': parseInt(input.value, 10),
+                  properties: {'Type': datasetType}
               });
-              this.handleErrorMessage(response.description);
-
-              const soldOutMessage = this.submitButton.querySelector('.sold-out-message');
-              if (!soldOutMessage) return;
-              this.submitButton.setAttribute('aria-disabled', true);
-              this.submitButtonText.classList.add('hidden');
-              soldOutMessage.classList.remove('hidden');
-              this.error = true;
-              return;
-            } else if (!this.cart) {
-              window.location = window.routes.cart_url;
-              return;
-            }
-
-            if (!this.error)
-              publish(PUB_SUB_EVENTS.cartUpdate, {
-                source: 'product-form',
-                productVariantId: formData.get('id'),
-                cartData: response,
-              });
-            this.error = false;
-            const quickAddModal = this.closest('quick-add-modal');
-            if (quickAddModal) {
-              document.body.addEventListener(
-                'modalClosed',
-                () => {
-                  setTimeout(() => {
-                    this.cart.renderContents(response);
-                  });
-                },
-                { once: true }
-              );
-              quickAddModal.hide(true);
-            } else {
-              this.cart.renderContents(response);
-            }
-          })
-          .catch((e) => {
-            console.error(e);
-          })
-          .finally(() => {
-            this.submitButton.classList.remove('loading');
-            if (this.cart && this.cart.classList.contains('is-empty')) this.cart.classList.remove('is-empty');
-            if (!this.error) this.submitButton.removeAttribute('aria-disabled');
-            this.querySelector('.loading__spinner').classList.add('hidden');
           });
+          let bodyData = {
+            items: [...variantData],
+            sections: this.cart ? this.cart.getSectionsToRender().map((section) => section.id) : [],
+            sections_url: window.location.pathname,
+          };
+          fetch(window.Shopify.routes.root + 'cart/add.js', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(bodyData)
+            })
+            .then(response => {
+              return response.json();
+            })
+            .then((response) => {
+                if (response.status) {
+                  publish(PUB_SUB_EVENTS.cartError, {
+                    source: 'product-form',
+                    productVariantId: formData.get('id'),
+                    errors: response.errors || response.description,
+                    message: response.message,
+                  });
+                  this.handleErrorMessage(response.description);
+    
+                  const soldOutMessage = this.submitButton.querySelector('.sold-out-message');
+                  if (!soldOutMessage) return;
+                    this.submitButton.setAttribute('aria-disabled', true);
+                    this.submitButtonText.classList.add('hidden');
+                    soldOutMessage.classList.remove('hidden');
+                    this.error = true;
+                    return;
+                  } else if (!this.cart) {
+                    window.location = window.routes.cart_url;
+                    return;
+                  }
+    
+                if (!this.error)
+                  publish(PUB_SUB_EVENTS.cartUpdate, {
+                    source: 'product-form',
+                    productVariantId: formData.get('id'),
+                    cartData: response,
+                  });
+                this.error = false;
+                const quickAddModal = this.closest('quick-add-modal');
+                if (quickAddModal) {
+                  document.body.addEventListener(
+                    'modalClosed',
+                    () => {
+                      setTimeout(() => {
+                        this.cart.renderContents(response);
+                      });
+                    },
+                    { once: true }
+                  );
+                  quickAddModal.hide(true);
+                } else {
+                  this.cart.renderContents(response);
+                }
+                setTimeout(function() { 
+                  sliderReinit();
+              }, 1000);
+              })
+            .catch((error) => {
+              console.error('Error:', error);
+            })
+            .finally(() => {
+              this.submitButton.classList.remove('loading');
+              if (this.cart && this.cart.classList.contains('is-empty')) this.cart.classList.remove('is-empty');
+              if (!this.error) this.submitButton.removeAttribute('aria-disabled');
+              this.querySelector('.loading__spinner').classList.add('hidden');
+            });
+       }else{
+        
+         if (this.cart) {
+           formData.append(
+             'sections',
+             this.cart.getSectionsToRender().map((section) => section.id)
+           );
+           formData.append('sections_url', window.location.pathname);
+           this.cart.setActiveElement(document.activeElement);
+         }
+         if (datasetType) {
+           formData.append('properties[Type]',datasetType);
+         }
+
+
+         config.body = formData;
+         fetch(`${routes.cart_add_url}`, config)
+           .then((response) => response.json())
+           .then((response) => {
+             if (response.status) {
+               publish(PUB_SUB_EVENTS.cartError, {
+                 source: 'product-form',
+                 productVariantId: formData.get('id'),
+                 errors: response.errors || response.description,
+                 message: response.message,
+               });
+               this.handleErrorMessage(response.description);
+ 
+               const soldOutMessage = this.submitButton.querySelector('.sold-out-message');
+               if (!soldOutMessage) return;
+                  this.submitButton.setAttribute('aria-disabled', true);
+                  this.submitButtonText.classList.add('hidden');
+                  soldOutMessage.classList.remove('hidden');
+                  this.error = true;
+                  return;
+                } else if (!this.cart) {
+                  window.location = window.routes.cart_url;
+                  return;
+                }
+ 
+             if (!this.error)
+               publish(PUB_SUB_EVENTS.cartUpdate, {
+                 source: 'product-form',
+                 productVariantId: formData.get('id'),
+                 cartData: response,
+               });
+             this.error = false;
+             const quickAddModal = this.closest('quick-add-modal');
+             if (quickAddModal) {
+               document.body.addEventListener(
+                 'modalClosed',
+                 () => {
+                   setTimeout(() => {
+                     this.cart.renderContents(response);
+                   });
+                 },
+                 { once: true }
+               );
+               quickAddModal.hide(true);
+             } else {
+               this.cart.renderContents(response);
+             }
+             setTimeout(function() { 
+              sliderReinit();
+            }, 1000);
+           })
+           .catch((e) => {
+             console.error(e);
+           })
+           .finally(() => {
+             this.submitButton.classList.remove('loading');
+             if (this.cart && this.cart.classList.contains('is-empty')) this.cart.classList.remove('is-empty');
+             if (!this.error) this.submitButton.removeAttribute('aria-disabled');
+             this.querySelector('.loading__spinner').classList.add('hidden');
+           });
+
+        }
       }
 
       handleErrorMessage(errorMessage = false) {

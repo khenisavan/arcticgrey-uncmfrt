@@ -34,20 +34,12 @@
             "heading": "Important Link",
             "menu": "important-link"
           }
-        },
-        "text_cb7GbP": {
-          "type": "text",
-          "settings": {
-            "heading": "Contact Us",
-            "subtext": "<p>Let Us Help You<br/><strong>(888) 860-0572</strong></p>"
-          }
         }
       },
       "block_order": [
         "link_list_PzrRm4",
         "link_list_Q8N3hV",
-        "link_list_Jc8CxX",
-        "text_cb7GbP"
+        "link_list_Jc8CxX"
       ],
       "settings": {
         "color_scheme": "scheme-2",

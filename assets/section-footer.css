@@ -7,10 +7,20 @@
 }
 
 .footer__content-top {
-  padding-bottom: 5rem;
-  display: block;
+    padding-bottom: 5rem;
+    display: block;
+    display: flex
+;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row-reverse;
 }
-
+.footer__blocks-wrapper.scroll-trigger.animate--slide-in {
+    width: calc(100% - 368px);
+}
+.footer-block--newsletter{
+  width:368px;
+}
 @media screen and (max-width: 749px) {
   .footer .grid {
     display: block;

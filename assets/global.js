@@ -1267,3 +1267,35 @@ class BulkAdd extends HTMLElement {
 if (!customElements.get('bulk-add')) {
   customElements.define('bulk-add', BulkAdd);
 }
+
+
+const $sample_atc_submit_event = async function($form_data){
+  const $sample_addtocart_result = await fetch('/cart/add.json', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify($form_data)
+  });
+  const $atc_success_result = await $sample_addtocart_result.json();
+  console.log("$atc_success_result" , $form_data)
+  if($atc_success_result.items){
+
+
+    
+    if (document.querySelector('cart-drawer') && document.querySelector('cart-drawer').classList.contains('is-empty')) document.querySelector('cart-drawer').classList.remove('is-empty');
+    const quickAddModal = document.querySelector('quick-add-modal');
+    if(quickAddModal){
+      document.body.addEventListener('modalClosed', () => {
+        setTimeout(() => { document.querySelector('cart-drawer').renderContents($atc_success_result) });
+      }, {once: true});
+      quickAddModal.hide(true);
+    } else{
+      document.querySelector('cart-drawer').renderContents($atc_success_result);
+    }
+
+    
+  } else{
+    console.error($atc_success_result);
+  }
+}
