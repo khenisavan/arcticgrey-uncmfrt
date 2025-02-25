@@ -1,0 +1,112 @@
+{{ 'banner-with-text.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mob_padding_top }}px;
+    padding-bottom: {{ section.settings.mob_padding_bottom }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="section_banner_text_sec section-{{ section.id }}-padding">
+  <div class="page-width">
+    <div class="section_banner_text_inner">
+      <div class="section_banner_img">
+         {% if section.settings.img != blank %}
+         <img src="{{ section.settings.img | img_url:'master' }}">
+        {% endif %}
+      </div>
+      <div class="section_banner_text">
+        {% if section.settings.title != blank %}
+        <h2>{{ section.settings.title }}</h2>
+        {% endif %}
+        {% if section.settings.desc != blank %}
+        <p>{{ section.settings.desc }}</p>
+        {% endif %}
+      
+        <div class="section_btn_flex">
+          <div class="btn_1">
+            {% if section.settings.btn1_text != blank %}
+            <a href="{{ section.settings.btn1_url }}" class="common_btn">
+              {{ section.settings.btn1_text }}
+            </a>
+            {% endif %}
+          </div>
+          <div class="btn_2">
+             {% if section.settings.btn2_text != blank %}
+            <a href="{{ section.settings.btn2_url }}">
+              {{ section.settings.btn2_text }}
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% schema %}
+  {
+    "name": "Banner With Text",
+    "settings": [
+        {
+        "type": "image_picker",
+        "id": "img",
+        "label": "Add Img"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Add Title"
+      },
+      {
+        "type": "textarea",
+        "id": "desc",
+        "label": "Add Content",
+      },
+      {
+        "type": "text",
+        "id": "btn1_text",
+        "label": "Add Button Text 1"
+      },
+      {
+        "type": "url",
+        "id": "btn1_url",
+        "label": "Add Button Url 1"
+      },
+       {
+        "type": "text",
+        "id": "btn2_text",
+        "label": "Add Button Text 2"
+      },
+      {
+        "type": "url",
+        "id": "btn2_url",
+        "label": "Add Button Url 2"
+      }
+    ],
+    "presets": [
+      {
+        "name":"Banner With Text"
+      }
+    ]
+  }
+{% endschema %}

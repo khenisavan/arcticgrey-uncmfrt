@@ -1,0 +1,253 @@
+{{ 'video-banner.css' | asset_url | stylesheet_tag }}
+
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mob_padding_top }}px;
+    padding-bottom: {{ section.settings.mob_padding_bottom }}px;
+  }
+  .section-{{ section.id }}-padding .section_video-banner--video:before {
+      opacity: {{ section.settings.overlay | times: 0.01 }};
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- if section.settings.video != blank -%}
+<div class="section-{{ section.id }}-padding section_video-banner--main">
+  <div class="section_video-banner--video">
+    <video playsinline autoplay muted loop src="{{ section.settings.video.sources[1].url }}"></video>
+  </div>
+  <div class="section_video-banner--content text-position--{{ section.settings.text_postion }}">
+    <div class="page-width">
+      <div class="section_video-banner--content-inner {{ section.settings.text_content }}">
+        {% if section.settings.heading != blank %}
+        <div class="section_video-text-title title-wrapper--no-top-margin">
+            <h1 class="title inline-richtext {{ section.settings.heading_size }}">{{ section.settings.heading }}</h1>
+        </div>
+        {% endif %}
+        {% if section.settings.inline_content != blank %}
+        <div class="section_video-text-content">
+            {{ section.settings.inline_content }}
+        </div>
+        {% endif %}
+        {% if section.settings.button_text != blank %}
+        <div class="section_video-text-button">
+            <a href="{% if section.settings.button_url != blank %}{{ section.settings.button_url }}{% else %}#0{% endif %}" class="section_video-text-button-inner">{{ section.settings.button_text }}</a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+      
+{% schema %}
+{
+  "name": "Video Banner",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_video_looping",
+      "label": "t:sections.video.settings.enable_video_looping.label",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Add video"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "t:sections.video.settings.video.label"
+    },
+    {
+      "type": "header",
+      "content": "Add overlay content"
+    },
+    {
+      "type": "range",
+      "id": "overlay",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "label": "Add overlay",
+      "default": 40
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "t:sections.video.settings.heading.default",
+      "label": "t:sections.video.settings.heading.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        },
+        {
+          "value": "hxl",
+          "label": "t:sections.all.heading_size.options__4.label"
+        },
+        {
+          "value": "hxxl",
+          "label": "t:sections.all.heading_size.options__5.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "inline_content",
+      "default": "Add description here",
+      "label": "Inline rich text"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "default": "Shop Now",
+      "label": "Add button text"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Add Button URL"
+    },
+    {
+      "type": "select",
+      "id": "text_content",
+      "label": "Text Content",
+      "default": "center",
+      "options": [
+        {
+          "label": "left",
+          "value": "left"
+        },
+        {
+          "label": "center",
+          "value": "center"
+        },
+        {
+          "label": "right",
+          "value": "right"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "text_postion",
+      "label": "Text Position",
+      "default": "middle-center",
+      "options": [
+        {
+          "value": "top-left",
+          "label": "top left"
+        },
+        {
+          "value": "top-center",
+          "label": "top center"
+        },
+        {
+          "value": "top-right",
+          "label": "top right"
+        },
+        {
+          "value": "middle-left",
+          "label": "middle left"
+        },
+        {
+          "value": "middle-center",
+          "label": "middle center"
+        },
+        {
+          "value": "middle-right",
+          "label": "middle right"
+        },
+        {
+          "value": "bottom-left",
+          "label": "bottom left"
+        },
+        {
+          "value": "bottom-center",
+          "label": "bottom center"
+        },
+        {
+          "value": "bottom-right",
+          "label": "bottom right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+          {
+      "type": "range",
+      "id": "mob_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile padding top",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "mob_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile padding bottom",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Banner"
+    }
+  ]
+}
+{% endschema %}

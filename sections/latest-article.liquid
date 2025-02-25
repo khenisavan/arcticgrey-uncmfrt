@@ -1,0 +1,139 @@
+{{ 'section-latest-article.css' | asset_url | stylesheet_tag }}
+<div class="section_latest-article">
+  <div class="page-width">
+    <div class="section_latest-article--wrapper">
+      <div class="section_article-heading--wrapper">
+        <div class="section_article-heading">
+          <p>{{ section.settings.heading_one }}</p>
+          <h2>{{ section.settings.heading_two }}</h2>
+        </div>
+        <a href="javascript:void(0);">View All</a>
+      </div>
+      <div class="section_article-box--wrapper">
+        <div class="section_article-box-left">
+          <div class="section_article-img">
+            <img src="{{ section.settings.article_image | img_url:"1024x1024" }}" alt height="" width="">
+          </div>
+          <div class="section_article-content">
+            <span>{{ section.settings.article_heading_one }}</span>
+            <h6>{{ section.settings.article_heading_two }}</h6>
+            <div class="section_article-desc">
+              <p>{{ section.settings.article_heading_three }}</p>
+              <p>
+                <svg width="2" height="17" viewBox="0 0 2 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 0.5V16.5" stroke="white" stroke-opacity="0.2"></path>
+                </svg>
+              </p>
+              <p>{{ section.settings.article_heading_four }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="section_article-box-right">
+          {% for block in section.blocks %}
+            <div class="section_article-right-box">
+              <div class="section_article-right-img">
+                <img src="{{ block.settings.article_image | img_url:"1024x1024" }}" alt height="" width="">
+              </div>
+              <div class="section_article-right-content">
+                <p>{{ block.settings.article_heading_one }}</p>
+                <h4>{{ block.settings.article_heading_two }}</h4>
+                <div class="section_article-desc">
+                  <p>{{ block.settings.article_heading_three }}</p>
+                  <p>
+                    <svg width="2" height="17" viewBox="0 0 2 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1 0.5V16.5" stroke="#1B1F23"></path>
+                    </svg>
+                  </p>
+                  <p>{{ block.settings.article_heading_four }}</p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Latest Article",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+      {
+          "type": "text",
+          "id": "heading_one",
+          "label": "Heading one"
+      },
+      {
+          "type": "text",
+          "id": "heading_two",
+          "label": "Heading two"
+      },
+      {
+          "type": "image_picker",
+          "id": "article_image",
+          "label": "Article image"
+      },
+      {
+          "type": "text",
+          "id": "article_heading_one",
+          "label": "Article Heading one"
+      },
+      {
+          "type": "text",
+          "id": "article_heading_two",
+          "label": "Article Heading two"
+      },
+      {
+          "type": "text",
+          "id": "article_heading_three",
+          "label": "Article Heading three"
+      },
+      {
+          "type": "text",
+          "id": "article_heading_four",
+          "label": "Article Heading Four"
+      }
+  ],
+  "blocks": [
+      {
+          "type": "text",
+          "name":"Article",
+          "settings": [
+              {
+                  "type": "image_picker",
+                  "id": "article_image",
+                  "label": "Article image"
+              },
+              {
+                  "type": "text",
+                  "id": "article_heading_one",
+                  "label": "Article Heading one"
+              },
+              {
+                  "type": "text",
+                  "id": "article_heading_two",
+                  "label": "Article Heading two"
+              },
+              {
+                  "type": "text",
+                  "id": "article_heading_three",
+                  "label": "Article Heading three"
+              },
+              {
+                  "type": "text",
+                  "id": "article_heading_four",
+                  "label": "Article Heading Four"
+              }
+          ]
+      }
+  ],
+  "presets" : [
+    {
+      "name": "Latest Article"
+    }
+  ]
+}
+{% endschema %}

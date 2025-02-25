@@ -1,0 +1,116 @@
+.section_goals-section--header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.section_goals-section--header p.section_goals-subheading {
+  color: #000;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  margin-bottom: 8px;
+  margin-top: 0;
+}
+.section_goals-section--header h2.section_goals-heading {
+  color: #000;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 47px;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+.section_goals-section--header p.section_goals-content {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  max-width: 350px;
+  margin: 0 auto;
+  color: #1b1f23b2;
+}
+.section_goals-section--image {
+  position: relative;
+  padding-top: 136%;
+  overflow: hidden;
+  border-radius: 8px;
+}
+.section_goals-section--detail:hover img {
+  transform: scale(1.07);
+}
+.section_goals-section--image img {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: 0.4s all ease-in-out;
+}
+.section_goals-section--content-left h3 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+  margin: 0;
+  color: #1b1f23;
+}
+.section_goals-section--content {
+  margin-top: 24px;
+  display: flex;
+  gap: 5px;
+}
+.section_goals-section--content-left p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  color: #1b1f23cc;
+  margin: 8px 0 0;
+}
+.section_goals-section--content-right a {
+  width: 37px;
+  height: 37px;
+  border: 1px solid #1b1f23;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+}
+.section_goals-section--content-left {
+  width: calc(100% - 42px);
+}
+.section_goals-section--detail .section_goals-section--content-right svg {
+  transition: all 0.3s ease-in-out;
+}
+.section_goals-section--detail:hover .section_goals-section--content-right svg {
+  transform: rotate(45deg);
+}
+.section_goals-section--content-right a:hover svg path {
+  fill: #fff;
+}
+.section_goals-section--content-right a:hover {
+  background-color: #000;
+}
+
+@media (max-width: 749px) {
+  .section_goals-section--header h2.section_goals-heading {
+    font-size: 28px;
+    line-height: 33px;
+    margin-bottom: 16px;
+  }
+  .section_goals-section--header {
+    text-align: center;
+    margin-bottom: 25px;
+  }
+  .section_goals-section--header p.section_goals-content {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .section_goals-section--content-left p {
+    font-size: 14px;
+    line-height: 19px;
+  }
+  .section_goals-section--content-right a {
+    width: 30px;
+    height: 30px;
+  }
+}

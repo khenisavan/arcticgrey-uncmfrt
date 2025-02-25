@@ -1,0 +1,14 @@
+.section_animation-text--content p {
+    width: auto;
+    margin: 0 16px;
+    font-size: 14px;
+    line-height: 17px;
+}
+.section_animation-text--content {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.section_animation-text--inner .swiper-wrapper {
+    transition-timing-function: linear;
+}

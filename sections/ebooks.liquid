@@ -1,0 +1,81 @@
+{{ 'section-ebooks.css' | asset_url | stylesheet_tag }}
+
+<div class="section_ebooks">
+  <div class="page-width">
+    {% if section.settings.image %}
+      <div class="section_ebooks--wrapper section_{{ section.id }}">
+        <style>
+          .section_{{ section.id }} {
+              background-image: url({{ section.settings.image | img_url: '1024x1024' }});
+          }
+        </style>
+        <div class="section_ebooks-content">
+          {% if section.settings.heading != blank %}
+            <h2>{{ section.settings.heading }}</h2>
+          {% endif %}
+          {% if section.settings.description != blank %}
+            <p>{{ section.settings.description }}</p>
+          {% endif %}
+          <div class="section_ebook-btn--wrapper">
+            {% if section.settings.btn_one != blank %}
+              <a href="{{ section.settings.btn_one_url }}">{{ section.settings.btn_one }}</a>
+            {% endif %}
+            {% if section.settings.btn_two != blank %}
+              <a href="{{ section.settings.btn_two_url }}" class="section_bor-btn">{{ section.settings.btn_two }}</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "eBooks",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+      {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+      },
+      {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+      },
+      {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+      },
+      {
+          "type": "text",
+          "id": "btn_one",
+          "label": "Button one"
+      },
+    {
+      "type": "url",
+      "id": "btn_one_url",
+      "label": "Button One link"
+    },
+      {
+          "type": "text",
+          "id": "btn_two",
+          "label": "Button two"
+      },
+    {
+      "type": "url",
+      "id": "btn_two_url",
+      "label": "Button two link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "eBooks"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,127 @@
+{{ 'logo-with-review.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mob_padding_top }}px;
+    padding-bottom: {{ section.settings.mob_padding_bottom }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+
+<div class="section_logo_sec section-{{ section.id }}-padding">
+  <div class="page-width">
+    <div class="section_logo_review_flex">
+      <div class="section_review_col">
+        {% if section.settings.title != blank %}
+        <h5>{{ section.settings.title }}</h5>
+        {% endif %}
+        {% if section.settings.review != blank %}
+        <div class="section_review">{{ section.settings.review }}</div>
+        {% endif %}
+      </div>
+      <div class="section_logo_col">
+         {% for block in section.blocks %}
+          <div class="section_logo_wrapper">
+            {% if block.settings.logo != blank %}
+              <img src="{{ block.settings.logo | img_url:'master' }}">
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+{% schema %}
+  {
+    "name": "Logo Section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Add Title"
+      },
+      {
+        "type": "html",
+        "id": "review",
+        "label": "Add Review"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.all.padding.section_padding_heading"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 50
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 50
+      },
+      {
+        "type": "range",
+        "id": "mob_padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Mobile padding top",
+        "default": 20
+      },
+      {
+        "type": "range",
+        "id": "mob_padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Mobile padding bottom",
+        "default": 20
+      }
+    ],
+    "blocks": [
+      {
+        "type": "logo_block",
+        "name":"Logo Block",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "logo",
+            "label": "Add Logo"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Logo Section"
+      }
+    ]
+  }
+{% endschema %}

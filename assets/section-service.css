@@ -1,0 +1,122 @@
+.section_service_flex {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+.section_service_wrapper {
+  width: 25%;
+  padding: 0 16px;
+}
+.section_service_wrapper span {
+  display: inline-flex;
+  padding: 13px;
+  background: #1b1f23;
+  border-radius: 50%;
+  margin-bottom: 24px;
+}
+.section_service_main h2 {
+  max-width: 420px;
+}
+.section_service_main h2 {
+  margin-bottom: 50px;
+}
+.section_service_wrapper h4 {
+  margin: 0;
+  color: #1b1f23;
+  font-family: Rubik;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-bottom: 16px;
+}
+.section_service_wrapper p {
+  margin: 0;
+  color: #1b1f23cc;
+  font-family: Rubik;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  max-width: 376px;
+}
+
+@media (max-width: 1599px) {
+  .section_service_main h2 {
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .section_service_main h2 {
+    margin-bottom: 40px;
+  }
+}
+@media (max-width: 1199px) {
+  .section_service_wrapper p {
+    font-size: 14px;
+    max-width: 100%;
+  }
+  .section_service_wrapper h4 {
+    margin: 0 0 10px;
+  }
+  .section_service_wrapper span {
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 991px) {
+.section_service_main h2 {
+    margin-bottom: 30px;
+  }
+  .section_service_wrapper {
+    width: 50%;
+  }
+  .section_service_flex {
+    row-gap: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .section_service_main h2 {
+    margin-bottom: 20px;
+  }
+  .section_service_wrapper p {
+    line-height: normal;
+  }
+  .section_service_wrapper {
+    padding: 0 10px;
+  }
+  .section_service_flex {
+    margin: 0 -10px;
+  }
+}
+
+@media (max-width: 575px) {
+  .section_service_wrapper span {
+    padding: 8px;
+    margin-bottom: 14px;
+  }
+  .section_service_wrapper span svg {
+    width: 20px;
+    height: 20px;
+  }
+  .section_service_wrapper h4 {
+    margin: 0 0 6px;
+    font-size: 16px;
+  }
+  .section_service_wrapper h4 {
+    margin: 0 0 6px;
+    font-size: 16px;
+  }
+}
+@media (max-width: 425px) {
+  .section_service_wrapper {
+    text-align: center;
+    width: 100%;
+  }
+  .section_service_wrapper p {
+    text-align: center;
+  }
+}

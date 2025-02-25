@@ -1,0 +1,131 @@
+.section_logo_review_flex {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+  align-items: center;
+}
+.section_review_col {
+  width: 25%;
+  padding: 0 15px;
+  border-right: 1px solid rgba(27, 31, 35, 0.1);
+}
+.section_logo_col {
+  width: 75%;
+  padding: 0 15px 0 86px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -4px;
+}
+.section_logo_wrapper {
+  width: 12%;
+  padding: 0 4px;
+}
+.section_logo_sec {
+  padding: 24px 0;
+  background: #f6f6f5;
+}
+.section_logo_wrapper {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: #fff;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 1;
+}
+.section_review_col h5 {
+  margin: 0;
+  color: #1b1f23;
+  font-family: Rubik;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 10px 8px;
+  border-radius: 8px;
+  border: 1px solid #000;
+  background: rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  margin-bottom: 12px;
+}
+.section_review {
+  display: flex;
+  line-height: normal;
+  column-gap: 8px;
+  color: #1b1f23;
+  font-family: Rubik;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.section_review span {
+  display: inline-flex;
+  line-height: 0;
+}
+
+@media (max-width: 1599px) {
+  .section_logo_col {
+    width: 74%;
+    padding: 0 15px 0 64px;
+  }
+  .section_review_col {
+    width: 26%;
+    padding: 0 46px 0 15px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .section_logo_wrapper {
+    width: 16%;
+  }
+  .section_logo_col {
+    width: 71%;
+    padding: 0 15px 0 20px;
+  }
+  .section_review_col {
+    width: 29%;
+    padding: 0 25px 0 15px;
+  }
+  .section_review_col h5 {
+    padding: 8px 6px;
+  }
+}
+
+@media (max-width: 1199px) {
+ .section_logo_col {
+    width: 69%;
+    padding: 0 15px 0 20px;
+  }
+  .section_logo_sec {
+    padding: 22px 0;
+  }
+  .section_review span svg {
+    width: 80px;
+    height: 18px;
+  }
+  .section_review_col h5 {
+    padding: 6px 4px;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  .section_review_col {
+    width: 31%;
+    padding: 0 11px 0 15px;
+  }
+}
+
+@media (max-width: 991px) {
+  .section_logo_review_flex {
+    row-gap: 15px;
+  }
+  .section_logo_col {
+    width: 100%;
+  }
+  .section_logo_review_flex {
+    row-gap: 15px;
+  }
+  .section_review_col {
+    width: 100%;
+    text-align: center;
+  }
+}
