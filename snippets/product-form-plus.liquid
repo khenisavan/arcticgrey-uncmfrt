@@ -1,0 +1,38 @@
+<product-form data-section-id="{{ section_id }}">
+  {%- form 'product',
+    card_product,
+    id: product_form_id,
+    class: 'form',
+    novalidate: 'novalidate',
+    data-type: 'add-to-cart-form'
+  -%}
+    <input
+      type="hidden"
+      name="id"
+      value="{{ card_product.selected_or_first_available_variant.id }}"
+      class="product-variant-id"
+      {% if card_product.selected_or_first_available_variant.available == false %}
+        disabled
+      {% endif %}
+    >
+    <button
+      id="{{ product_form_id }}-submit"
+      type="submit"
+      name="add"
+      class=""
+      aria-haspopup="dialog"
+      aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
+      aria-live="polite"
+      data-sold-out-message="true"
+      {% if card_product.selected_or_first_available_variant.available == false %}
+        disabled
+      {% endif %}
+    >
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="16" cy="16" r="16" fill="#1B1F23"/>
+        <path d="M21.3125 15.75C21.276 16.151 21.0573 16.3698 20.6562 16.4062H16.2812V20.7812C16.2448 21.1823 16.026 21.401 15.625 21.4375C15.224 21.401 15.0052 21.1823 14.9688 20.7812V16.4062H10.5938C10.1927 16.3698 9.97396 16.151 9.9375 15.75C9.97396 15.349 10.1927 15.1302 10.5938 15.0938H14.9688V10.7188C15.0052 10.3177 15.224 10.099 15.625 10.0625C16.026 10.099 16.2448 10.3177 16.2812 10.7188V15.0938H20.6562C21.0573 15.1302 21.276 15.349 21.3125 15.75Z" fill="white"/>
+      </svg>
+      {%- render 'loading-spinner' -%}
+    </button>
+  {%- endform -%}
+</product-form>

@@ -30,6 +30,94 @@
     },
     "animation_text_FnnmL3": {
       "type": "animation-text",
+      "blocks": {
+        "text_JVtD8G": {
+          "type": "text",
+          "settings": {
+            "text": "High Quality Ingredients"
+          }
+        },
+        "text_tgQtVe": {
+          "type": "text",
+          "settings": {
+            "text": "Independently Certified"
+          }
+        },
+        "text_eUmGKK": {
+          "type": "text",
+          "settings": {
+            "text": "Expert Driven"
+          }
+        },
+        "text_f3GMKL": {
+          "type": "text",
+          "settings": {
+            "text": "Shipped Internationally"
+          }
+        },
+        "text_W987wF": {
+          "type": "text",
+          "settings": {
+            "text": "High Quality Ingredients"
+          }
+        },
+        "text_PLzfXx": {
+          "type": "text",
+          "settings": {
+            "text": "Independently Certified"
+          }
+        },
+        "text_QaCp33": {
+          "type": "text",
+          "settings": {
+            "text": "Expert Driven"
+          }
+        },
+        "text_QgfaD9": {
+          "type": "text",
+          "settings": {
+            "text": "Shipped Internationally"
+          }
+        },
+        "text_Wq7FEc": {
+          "type": "text",
+          "settings": {
+            "text": "High Quality Ingredients"
+          }
+        },
+        "text_8gUx3x": {
+          "type": "text",
+          "settings": {
+            "text": "Independently Certified"
+          }
+        },
+        "text_WMxJii": {
+          "type": "text",
+          "settings": {
+            "text": "Expert Driven"
+          }
+        },
+        "text_GCN8AX": {
+          "type": "text",
+          "settings": {
+            "text": "Shipped Internationally"
+          }
+        }
+      },
+      "block_order": [
+        "text_JVtD8G",
+        "text_tgQtVe",
+        "text_eUmGKK",
+        "text_f3GMKL",
+        "text_W987wF",
+        "text_PLzfXx",
+        "text_QaCp33",
+        "text_QgfaD9",
+        "text_Wq7FEc",
+        "text_8gUx3x",
+        "text_WMxJii",
+        "text_GCN8AX"
+      ],
       "settings": {
         "text_color": "#ffffff",
         "bg_color": "#000000",
@@ -77,6 +165,42 @@
           "settings": {
             "logo": "shopify://shop_images/BBC_News_2022__Alt_1.png"
           }
+        },
+        "logo_block_J8HBYK": {
+          "type": "logo_block",
+          "settings": {
+            "logo": "shopify://shop_images/Rolling_Stone_logo_1.png"
+          }
+        },
+        "logo_block_epHiGr": {
+          "type": "logo_block",
+          "settings": {
+            "logo": "shopify://shop_images/image_45.png"
+          }
+        },
+        "logo_block_JaKcpr": {
+          "type": "logo_block",
+          "settings": {
+            "logo": "shopify://shop_images/LA_Weekly_logo_1.png"
+          }
+        },
+        "logo_block_xTqJw9": {
+          "type": "logo_block",
+          "settings": {
+            "logo": "shopify://shop_images/Herb_Updated_Logo_Dark_Version_1.png"
+          }
+        },
+        "logo_block_N3F9bU": {
+          "type": "logo_block",
+          "settings": {
+            "logo": "shopify://shop_images/NewYorkTimes_1.png"
+          }
+        },
+        "logo_block_pK9nkj": {
+          "type": "logo_block",
+          "settings": {
+            "logo": "shopify://shop_images/BBC_News_2022__Alt_1.png"
+          }
         }
       },
       "block_order": [
@@ -85,7 +209,13 @@
         "logo_block_PbKkBh",
         "logo_block_7EYanY",
         "logo_block_VTJFFD",
-        "logo_block_eeaaVU"
+        "logo_block_eeaaVU",
+        "logo_block_J8HBYK",
+        "logo_block_epHiGr",
+        "logo_block_JaKcpr",
+        "logo_block_xTqJw9",
+        "logo_block_N3F9bU",
+        "logo_block_pK9nkj"
       ],
       "settings": {
         "title": "#1 Doctor Recommended",
@@ -93,7 +223,7 @@
         "padding_top": 50,
         "padding_bottom": 50,
         "mob_padding_top": 20,
-        "mob_padding_bottom": 20
+        "mob_padding_bottom": 40
       }
     },
     "goal_section_4FjXhz": {
@@ -171,7 +301,7 @@
         "show_description": false,
         "description_style": "body",
         "collection": "frontpage",
-        "products_to_show": 4,
+        "products_to_show": 23,
         "columns_desktop": 4,
         "full_width": false,
         "show_view_all": true,
@@ -188,28 +318,6 @@
         "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
-      }
-    },
-    "section_service_VhR3YP": {
-      "type": "section-service",
-      "settings": {
-        "sub_title": "",
-        "heading": "",
-        "padding_top": 50,
-        "padding_bottom": 50,
-        "mob_padding_top": 20,
-        "mob_padding_bottom": 20
-      }
-    },
-    "banner_with_text_YfpJqg": {
-      "type": "banner-with-text",
-      "settings": {
-        "title": "",
-        "desc": "",
-        "btn1_text": "",
-        "btn1_url": "",
-        "btn2_text": "",
-        "btn2_url": ""
       }
     },
     "health_fitness_Q6y6Uw": {
@@ -256,7 +364,79 @@
       ],
       "settings": {
         "heading": "🧐 Why Health & Fitness",
-        "heading_two": "Clean Supplements - Made For You"
+        "heading_two": "Clean Supplements - Made For You",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "mob_padding_top": 40,
+        "mob_padding_bottom": 40
+      }
+    },
+    "real_result_LATya4": {
+      "type": "real-result",
+      "blocks": {
+        "block_NEqaeV": {
+          "type": "block",
+          "settings": {
+            "video": "shopify://files/videos/video-1.mp4",
+            "product": "complete-sleep-bundle"
+          }
+        },
+        "block_kEP8HB": {
+          "type": "block",
+          "settings": {
+            "video": "shopify://files/videos/video-2.mp4",
+            "product": "grass-fed-whey-protein-isolate-powder"
+          }
+        },
+        "block_dN8B38": {
+          "type": "block",
+          "settings": {
+            "video": "shopify://files/videos/video-3.mp4",
+            "product": "magnesium-l-threonate"
+          }
+        },
+        "block_mMejKX": {
+          "type": "block",
+          "settings": {
+            "video": "shopify://files/videos/video-4.mp4",
+            "product": "male-hormone-support-bundle"
+          }
+        },
+        "block_gEPT3K": {
+          "type": "block",
+          "settings": {
+            "video": "shopify://files/videos/video-5.mp4",
+            "product": "omega-3"
+          }
+        },
+        "block_zBeeT3": {
+          "type": "block",
+          "settings": {
+            "video": "shopify://files/videos/video-6.mp4",
+            "product": "pr-lotion-starter-kit"
+          }
+        },
+        "block_XUUpRE": {
+          "type": "block",
+          "settings": {
+            "video": "shopify://files/videos/video-6.mp4",
+            "product": "tongkat-fadogia-60-day-supply"
+          }
+        }
+      },
+      "block_order": [
+        "block_NEqaeV",
+        "block_kEP8HB",
+        "block_dN8B38",
+        "block_mMejKX",
+        "block_gEPT3K",
+        "block_zBeeT3",
+        "block_XUUpRE"
+      ],
+      "settings": {
+        "title": "Real People. Real Results.",
+        "heading_size": "h1",
+        "description": "Trusted & Proven by Science"
       }
     },
     "tab_collection_RCrjqx": {
@@ -497,9 +677,8 @@
     "logo_with_review_D4U3m4",
     "goal_section_4FjXhz",
     "featured_collection_6T3WWt",
-    "section_service_VhR3YP",
-    "banner_with_text_YfpJqg",
     "health_fitness_Q6y6Uw",
+    "real_result_LATya4",
     "tab_collection_RCrjqx",
     "weight_loss_gHiNp4",
     "ebooks_gwRBJB",

@@ -15,12 +15,12 @@
 }
 
 .section_footer-contact-info {
-  max-width: 212px;
+  max-width: 193px;
   width: 100%;
 }
 
 .section_footer-menu--wrapper {
-  width: calc(100% - 800px);
+  width: calc(100% - 781px);
 }
 
 .section_footer-newsletter h3 {
@@ -88,7 +88,6 @@
 .section_footer-menu--wrapper {
   display: flex;
   gap: 60px;
-  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -129,6 +128,7 @@ h3.section_footer-heading {
   line-height: 28.44px;
   color: #1b1f23;
   margin-top: 8px;
+  letter-spacing: normal;
 }
 
 .section_footer-contact {
@@ -174,9 +174,19 @@ h3.section_footer-heading {
   padding: 15px 0;
 }
 
+.section_footer-bottom-right a {
+    color: #1B1F23;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    letter-spacing: normal;
+    line-height: 17.49px;
+}
+
 @media (max-width: 1359px) {
   .section_footer-top--wrapper {
-    gap: 60px;
+    gap: 30px;
   }
 
   .section_footer-newsletter {
@@ -184,7 +194,7 @@ h3.section_footer-heading {
   }
 
   .section_footer-menu--wrapper {
-    width: calc(100% - 590px);
+    width: calc(100% - 503px);
   }
 
   .section_footer-menu--wrapper {
@@ -222,18 +232,6 @@ h3.section_footer-heading {
 @media (min-width: 1440px) and (max-width: 1599px) {
   .section_footer-menu ul a {
     font-size: 15px;
-  }
-
-  .section_footer-top--wrapper {
-    gap: 130.5px;
-  }
-
-  .section_footer-menu--wrapper {
-    width: calc(100% - 850px);
-  }
-
-  .section_footer-menu--wrapper {
-    gap: 30px;
   }
 }
 

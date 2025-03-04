@@ -185,7 +185,7 @@ details[open].menu-opening > .menu-drawer__submenu {
   }
 }
 
-@media screen and (max-width: 989px) {
+@media screen and (max-width: 1024px) {
   .header--has-localizations:where(:not(.header--has-social)) .menu-drawer__utility-links {
     padding: 2rem 3rem;
   }
@@ -224,6 +224,7 @@ details[open].menu-opening > .menu-drawer__submenu {
 .menu-drawer .list-social {
   justify-content: flex-start;
   margin-left: -1.25rem;
+  display:flex;
 }
 
 .menu-drawer .list-social:empty {

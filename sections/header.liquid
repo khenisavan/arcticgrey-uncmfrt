@@ -13,10 +13,7 @@
 
 
 <style>
-  header-drawer {
-    justify-self: start;
-    margin-left: -1.2rem;
-  }
+ 
 
   {%- if section.settings.sticky_header_type == 'reduce-logo-size' -%}
     .scrolled-past-header .header__heading-logo-wrapper {
@@ -25,7 +22,7 @@
   {%- endif -%}
 
   {%- if section.settings.menu_type_desktop != "drawer" -%}
-    @media screen and (min-width: 990px) {
+    @media screen and (min-width: 1025px) {
       header-drawer {
         display: none;
       }
@@ -74,8 +71,8 @@
 
 {%- style -%}
   .header {
-    padding: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px 3rem {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px 3rem;
-  }
+    padding: 15px 2rem 15px 2rem;
+}
 
   .section-header {
     position: sticky; /* This is for fixing a Safari z-index issue. PR #2147 */
@@ -88,11 +85,15 @@
     }
   }
 
-  @media screen and (min-width: 990px) {
+  @media screen and (min-width: 1025px) {
     .header {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
+     header-drawer {
+    justify-self: start;
+    margin-left: -1.2rem;
+  }
   }
 {%- endstyle -%}
 
@@ -225,7 +226,7 @@
         {%- endif -%}
       </div>
      
-    <div class="section_header-male-button">
+    <div class="section_header-male-button lg-low-hide">
       <div class="srction_header-male-toggle">
         {{ section.settings.btn_title }}
         {{ 'icon-mail.svg' | inline_asset_content }}
@@ -237,7 +238,7 @@
       {%- if shop.customer_accounts_enabled -%}
         <a
           href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
-          class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}"
+          class="header__icon header__icon--account link focus-inset"
           rel="nofollow"
         >
           {%- if section.settings.enable_customer_avatar -%}

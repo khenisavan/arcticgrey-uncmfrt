@@ -56,7 +56,7 @@
 
 .section_article-img {
   position: relative;
-  /* padding-bottom: 56.3%; */
+  padding-bottom: 56%;
   height: 100%;
   border-radius: 8px;
   overflow: hidden;
@@ -73,8 +73,11 @@
 
 .section_article-content {
   position: absolute;
-  bottom: 40px;
-  left: 40px;
+    bottom: 0;
+    left: 0;
+    padding-bottom: 40px;
+    padding-left: 40px;
+  padding-right: 40px;
 }
 
 .section_article-content span {
@@ -216,9 +219,6 @@
   .section_article-right-content h4 {
     margin: 10px 0;
   }
-  .section_article-content {
-    display: none;
-  }
   .section_article-heading--wrapper {
     gap: 5px;
     display: flex;
@@ -229,5 +229,13 @@
   }
   .section_article-box--wrapper {
     margin-top: 20px;
+  }
+  .section_article-content {
+    padding-bottom: 20px;
+    padding-left: 20px;
+  padding-right: 20px;
+}
+  .section_article-img {
+    padding-top:70%;
   }
 }

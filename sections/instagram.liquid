@@ -5,7 +5,7 @@
     <div class="section_instagram-box section_instagram-content">
       <div class="section_instagram-content-box">
         <div class="section_instagram-title">
-          {% render 'icon-instagram-logo' %}
+          {{ 'icon-instagram-logo.svg' | inline_asset_content }}
           {{ section.settings.heading_one }}
         </div>
         <a href="javascript:void(0);">{{ section.settings.heading_two }}</a>
@@ -22,7 +22,7 @@
               height=""
             >
             <div class="section_instagram-hover">
-              {% render 'icon-instagram' %}
+              {{ 'icon-insta.svg' | inline_asset_content }}
             </div>
           </div>
         </div>
