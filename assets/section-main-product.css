@@ -1477,7 +1477,11 @@ a.product__text {
 .recipient-form .error-message::first-letter {
   text-transform: capitalize;
 }
-
+.section_product-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
 @media screen and (forced-colors: active) {
   .recipient-fields > hr {
     border-top: 0.1rem solid rgb(var(--color-background));

@@ -182,16 +182,16 @@ function focusVisiblePolyfill() {
 }
 
 function pauseAllMedia() {
-  document.querySelectorAll('.js-youtube').forEach((video) => {
-    video.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
-  });
-  document.querySelectorAll('.js-vimeo').forEach((video) => {
-    video.contentWindow.postMessage('{"method":"pause"}', '*');
-  });
-  document.querySelectorAll('video').forEach((video) => video.pause());
-  document.querySelectorAll('product-model').forEach((model) => {
-    if (model.modelViewerUI) model.modelViewerUI.pause();
-  });
+  // document.querySelectorAll('.js-youtube').forEach((video) => {
+  //   video.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
+  // });
+  // document.querySelectorAll('.js-vimeo').forEach((video) => {
+  //   video.contentWindow.postMessage('{"method":"pause"}', '*');
+  // });
+  // document.querySelectorAll('video').forEach((video) => video.pause());
+  // document.querySelectorAll('product-model').forEach((model) => {
+  //   if (model.modelViewerUI) model.modelViewerUI.pause();
+  // });
 }
 
 function removeTrapFocus(elementToFocus = null) {
@@ -1267,3 +1267,70 @@ class BulkAdd extends HTMLElement {
 if (!customElements.get('bulk-add')) {
   customElements.define('bulk-add', BulkAdd);
 }
+
+
+const $sample_atc_submit_event = async function($form_data){
+  const $sample_addtocart_result = await fetch('/cart/add.json', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify($form_data)
+  });
+  const $atc_success_result = await $sample_addtocart_result.json();
+  console.log("$atc_success_result" , $form_data)
+  if($atc_success_result.items){
+
+
+    
+    if (document.querySelector('cart-drawer') && document.querySelector('cart-drawer').classList.contains('is-empty')) document.querySelector('cart-drawer').classList.remove('is-empty');
+    const quickAddModal = document.querySelector('quick-add-modal');
+    if(quickAddModal){
+      document.body.addEventListener('modalClosed', () => {
+        setTimeout(() => { document.querySelector('cart-drawer').renderContents($atc_success_result) });
+      }, {once: true});
+      quickAddModal.hide(true);
+    } else{
+      document.querySelector('cart-drawer').renderContents($atc_success_result);
+    }
+
+    
+  } else{
+    console.error($atc_success_result);
+  }
+}
+
+function cartslider() {
+  var mySwiper = new Swiper(".cart-mySwiper", {
+    slidesPerView: 2.3,
+      spaceBetween: 12,
+    pagination: {
+      el: ".swiper-pagination",
+      type: "fraction",
+    },
+    navigation: {
+      nextEl: ".drawer-collection-next",
+      prevEl: ".drawer-collection-prev",
+    },
+     breakpoints: {
+    
+      320: {
+        slidesPerView: 1.3,
+        spaceBetween: 10,
+      }, 
+  
+    
+      1024: {
+        slidesPerView: 2.3,
+        spaceBetween: 12,
+      },
+
+    },
+  });
+}
+document.addEventListener('DOMContentLoaded', function () {
+  cartslider();
+});
+window.onload = function() {
+      document.body.classList.remove('display-hidden');
+};

@@ -1,0 +1,234 @@
+{{ 'section-weight-loss.css' | asset_url | stylesheet_tag }}
+
+<div class="section_weight-loss-wrapper">
+  <div class="page-width">
+    <div class="section_article-heading" bis_skin_checked="1">
+      {% if section.settings.heading_one != blank %}
+        <p>{{ section.settings.heading_one }}</p>
+      {% endif %}
+      {% if section.settings.heading_two != blank %}
+        <h2>{{ section.settings.heading_two }}</h2>
+      {% endif %}
+    </div>
+    <div class="section_weight-loss-wrapper-container-slider-box">
+      <div class="section_weight-loss-wrapper-container swiper">
+      <div class="section_weight-loss-wrapper-container-slider swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="section_weight-loss-box-wrapper-container swiper-slide">
+            <div class="section_weight-loss-box-wrapper">
+              <div class="section_weight-loss-left">
+                <img
+                  src="{{ block.settings.main_image | img_url:"1024x1024" }}"
+                  alt
+                  height=""
+                  width=""
+                >
+              </div>
+              <div class="section_weight-loss-right">
+                <div class="section_weight-loss-top-wrapper">
+                  <h6>{{ block.settings.heading_one }}</h6>
+                  <div class="section_weight-loss-top-box-wrapper">
+                    <div class="section_weight-loss-top-box">
+                      <img src="{{ block.settings.image_one | img_url:"1024x1024" }}">
+                      <p>{{ block.settings.image_heading_1 }}</p>
+                    </div>
+                    <div class="section_weight-loss-top-box">
+                      <img src="{{ block.settings.image_two | img_url:"1024x1024" }}">
+                      <p>{{ block.settings.image_heading_2 }}</p>
+                    </div>
+                    <div class="section_weight-loss-top-box">
+                      <img src="{{ block.settings.image_three | img_url:"1024x1024" }}">
+                      <p>{{ block.settings.image_heading_3 }}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="section_weight-box-product">
+                  <h3 class="section_weight-box-product-heading">{{ block.settings.heading_two }}</h3>
+                  <div class="section_weight-box-product-feature-listing">
+                    <div class="section_weight-box-product-list">
+                      <img src="{{ block.settings.image_four | img_url:"1024x1024" }}">
+                      <h4 class="section_weight-box-product-list-heading">{{ block.settings.image_heading_4 }}</h4>
+                      <div class="section_weight-box-product-list-description">
+                        {{ block.settings.image_description_4 }}
+                      </div>
+                    </div>
+                    <div class="section_weight-box-product-list">
+                      <img src="{{ block.settings.image_five | img_url:"1024x1024" }}">
+                      <h4 class="section_weight-box-product-list-heading">{{ block.settings.image_heading_5 }}</h4>
+                      <div class="section_weight-box-product-list-description">
+                        {{ block.settings.image_description_5 }}
+                      </div>
+                    </div>
+                    <div class="section_weight-box-product-list">
+                      <img src="{{ block.settings.image_six | img_url:"1024x1024" }}">
+                      <h4 class="section_weight-box-product-list-heading">{{ block.settings.image_heading_6 }}</h4>
+                      <div class="section_weight-box-product-list-description">
+                        {{ block.settings.image_description_6 }}
+                      </div>
+                    </div>
+                  </div>
+                  <a href="javascript:void(0);" class="section_weight-box-product-list-button">{{ block.settings.btn_text }}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      </div>
+      <!-- <div class="section_weight-loss-prev"></div>
+      <div class="section_weight-loss-next"></div> -->
+      <div class="section_weight-loss-prev">
+        <svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5.40179 0.182292L0.6875 4.55729C0.5625 4.67882 0.5 4.82639 0.5 5C0.5 5.17361 0.5625 5.32118 0.6875 5.44271L5.40179 9.81771C5.72321 10.0608 6.02679 10.0608 6.3125 9.81771C6.5625 9.50521 6.5625 9.21007 6.3125 8.93229L2.75 5.625H11.8571C12.25 5.59028 12.4643 5.38194 12.5 5C12.4643 4.61806 12.25 4.40972 11.8571 4.375H2.75L6.3125 1.06771C6.5625 0.789931 6.5625 0.494792 6.3125 0.182292C6.02679 -0.0607639 5.72321 -0.0607639 5.40179 0.182292Z" fill="#1B1F23"></path>
+        </svg>
+      </div>
+      <div class="section_weight-loss-next">
+        <svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.59821 0.182292L12.3125 4.55729C12.4375 4.67882 12.5 4.82639 12.5 5C12.5 5.17361 12.4375 5.32118 12.3125 5.44271L7.59821 9.81771C7.27679 10.0608 6.97321 10.0608 6.6875 9.81771C6.4375 9.50521 6.4375 9.21007 6.6875 8.93229L10.25 5.625H1.14286C0.75 5.59028 0.535714 5.38194 0.5 5C0.535714 4.61806 0.75 4.40972 1.14286 4.375H10.25L6.6875 1.06771C6.4375 0.789931 6.4375 0.494792 6.6875 0.182292C6.97321 -0.0607639 7.27679 -0.0607639 7.59821 0.182292Z" fill="#1B1F23"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", (event) => {
+    const weight_loss = document.querySelectorAll(".section_weight-loss-wrapper-container");
+      weight_loss && weight_loss.forEach(product_list => {new Swiper(product_list,{
+        loop: true,
+        navigation: {
+          nextEl: ".section_weight-loss-next",
+          prevEl: ".section_weight-loss-prev",
+        },
+        effect: "fade",
+        slidesPerView: 1,
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Weight Loss",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_one",
+      "label": "Heading one"
+    },
+    {
+      "type": "text",
+      "id": "heading_two",
+      "label": "Heading two"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "main_image",
+          "label": "main Image"
+        },
+        {
+          "type": "text",
+          "id": "heading_one",
+          "label": "Heading 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_one",
+          "label": "Image one"
+        },
+        {
+          "type": "text",
+          "id": "image_heading_1",
+          "label": "Image Heading 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_two",
+          "label": "Image Two"
+        },
+        {
+          "type": "text",
+          "id": "image_heading_2",
+          "label": "Image Heading 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_three",
+          "label": "Image Three"
+        },
+        {
+          "type": "text",
+          "id": "image_heading_3",
+          "label": "Image Heading 3"
+        },
+        {
+          "type": "text",
+          "id": "heading_two",
+          "label": "Heading 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_four",
+          "label": "Image Four"
+        },
+        {
+          "type": "text",
+          "id": "image_heading_4",
+          "label": "Image Heading 4"
+        },
+        {
+          "type": "richtext",
+          "id": "image_description_4",
+          "label": "Image Description 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_five",
+          "label": "Image Five"
+        },
+        {
+          "type": "text",
+          "id": "image_heading_5",
+          "label": "Image Heading 5"
+        },
+        {
+          "type": "richtext",
+          "id": "image_description_5",
+          "label": "Image Description 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_six",
+          "label": "Image Six"
+        },
+        {
+          "type": "text",
+          "id": "image_heading_6",
+          "label": "Image Heading 6"
+        },
+        {
+          "type": "richtext",
+          "id": "image_description_6",
+          "label": "Image Description 6"
+        },
+        {
+          "type": "text",
+          "id": "btn_text",
+          "label": "button Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Weight Loss"
+    }
+  ]
+}
+{% endschema %}

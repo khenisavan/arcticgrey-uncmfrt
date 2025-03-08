@@ -1,0 +1,67 @@
+.section_health-box-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin-top: 50px;
+}
+
+.section_health-box {
+  width: calc(25% - 24px);
+}
+.section_health-heading h2 {
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 47px;
+  letter-spacing: 0em;
+  color: rgba(27, 31, 35, 1);
+  margin: 8px 0 0;
+}
+.section_health-box svg {
+  display: block;
+}
+
+.section_health-box h4 {
+  font-family: Rubik;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 21.33px;
+  text-align: left;
+  margin: 24px 0 16px;
+  letter-spacing: 0;
+}
+
+.section_health-box p {
+  font-family: Rubik;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #1b1f23cc;
+  margin: 0;
+}
+
+@media (min-width: 1200px) and (max-width: 1359px) {
+  .section_health-box h4 {
+    font-size: 17px;
+  }
+}
+
+@media screen and (max-width: 989px) {
+  .section_health-box {
+    width: calc(50% - 7.5px);
+  }
+  .section_health-heading h2 {
+    font-size: 28px;
+    line-height: 35px;
+  }
+  .section_health-box-wrapper {
+      gap: 15px;
+      margin-top: 35px;
+  }
+  .section_health-box p {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .section_health-box h4 {
+      margin: 0px 0 16px;
+  }
+}

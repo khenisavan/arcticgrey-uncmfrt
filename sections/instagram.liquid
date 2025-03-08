@@ -1,0 +1,68 @@
+{{ 'section-instagram.css' | asset_url | stylesheet_tag }}
+
+<div class="page-width">
+  <div class="section_instagram-wrapper">
+    <div class="section_instagram-box section_instagram-content">
+      <div class="section_instagram-content-box">
+        <div class="section_instagram-title">
+          {{ 'icon-instagram-logo.svg' | inline_asset_content }}
+          {{ section.settings.heading_one }}
+        </div>
+        <a href="javascript:void(0);">{{ section.settings.heading_two }}</a>
+      </div>
+    </div>
+    {% for block in section.blocks %}
+      {% if block.settings.image != blank %}
+        <div class="section_instagram-box">
+          <div class="section_instagram-img">
+            <img
+              src="{{ block.settings.image | img_url:"1024x1024" }}"
+              alt
+              width=""
+              height=""
+            >
+            <div class="section_instagram-hover">
+              {{ 'icon-insta.svg' | inline_asset_content }}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Instagram",
+  "settings": [
+    {
+        "type": "text",
+        "id": "heading_one",
+        "label": "Heading one"
+    },
+    {
+        "type": "text",
+        "id": "heading_two",
+        "label": "Heading two"
+    }
+  ],
+  "blocks": [
+    {
+        "type": "image",
+        "name":"Image",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Instagram"
+    }
+  ]
+}
+{% endschema %}

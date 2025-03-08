@@ -13,19 +13,45 @@
   "sections": {
     "footer": {
       "type": "footer",
+      "blocks": {
+        "menu_TEBeK9": {
+          "type": "menu",
+          "settings": {
+            "heading": "About Us",
+            "menu": "footer"
+          }
+        },
+        "menu_7wBWda": {
+          "type": "menu",
+          "settings": {
+            "heading": "Support",
+            "menu": "customer-account-main-menu"
+          }
+        },
+        "menu_gHADb9": {
+          "type": "menu",
+          "settings": {
+            "heading": "Important Link",
+            "menu": "important-link"
+          }
+        },
+        "menu_9xr4fg": {
+          "type": "menu",
+          "settings": {
+            "heading": "Legal",
+            "menu": "legal"
+          }
+        }
+      },
+      "block_order": [
+        "menu_TEBeK9",
+        "menu_7wBWda",
+        "menu_gHADb9",
+        "menu_9xr4fg"
+      ],
       "settings": {
-        "color_scheme": "scheme-1",
-        "newsletter_enable": true,
-        "newsletter_heading": "Subscribe to our emails",
-        "enable_follow_on_shop": true,
-        "show_social": true,
-        "enable_country_selector": true,
-        "enable_language_selector": true,
-        "payment_enable": true,
-        "show_policy": true,
-        "margin_top": 0,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "heading": "Subscribe to our newsletter",
+        "description": "<p>Welcome to UNCMFRT. Sign up for exclusive content and we'll send you 10% off.</p>"
       }
     }
   },
