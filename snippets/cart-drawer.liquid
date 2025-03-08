@@ -549,10 +549,11 @@
               </button>
             </div>
           </div>
-          <div class="block_cart-drawer-collection-slider">
+          <div class="block_cart-drawer-collection-slider swiper cart-mySwiper">
+             <div class="swiper-wrapper">
             {% assign collection = settings.cart_drawer_collection %}
             {% for product in collection.products %}
-              <div class="block_cart-drawer-collection-item">
+              <div class="block_cart-drawer-collection-item swiper-slide">
                 <div class="block_cart-drawer-collection-item-block">
                   <a href="{{ product.url }}" class="block_cart-drawer-collection-img">
                     <img
@@ -569,12 +570,45 @@
                     <p class="block_cart-drawer-collection-price">
                       {{ product.price | money }}
                     </p>
-                    <input name="id" value="{{ product.variants.first.id }}" type="hidden">
-                    <button class="block_cart-drawer-collection-btn"  data-value="{{ product.variants.first.id }}">Add to Cart +</button>
+                     <product-form>
+                          {%- form 'product',
+                            product,
+                            class: 'form',
+                            novalidate: 'novalidate',
+                            data-type: 'add-to-cart-form'
+                          -%}
+                            <input
+                              type="hidden"
+                              name="id"
+                              value="{{ product.selected_or_first_available_variant.id }}"
+                              class="product-variant-id"
+                              {% if product.selected_or_first_available_variant.available == false %}
+                                disabled
+                              {% endif %}
+                            >
+                            <button
+                              id="{{ product_form_id }}-submit-{{ section.id }}"
+                              type="submit"
+                              name="add"
+                              class="quick-cart-btn block_cart-drawer-collection-btn "
+                              aria-haspopup="dialog"
+                              aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ product.id }}"
+                              aria-live="polite"
+                              data-sold-out-message="true"
+                              {% if product.selected_or_first_available_variant.available == false %}
+                                disabled
+                              {% endif %}
+                            >
+                              Add to Cart +
+                               {%- render 'loading-spinner' -%}
+                            </button>
+                          {%- endform -%}
+                        </product-form>
                   </div>
                 </div>
               </div>
             {% endfor %}
+             </div>
           </div>
         </div>
       </cart-drawer-items>

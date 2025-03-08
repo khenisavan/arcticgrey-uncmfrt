@@ -11,6 +11,7 @@
   }
   .section_text--{{ section.id }} .section_animation-text--content {
     color: {{ section.settings.text_color }};
+        max-width: fit-content;
   }
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
@@ -25,6 +26,26 @@
   <div class="section_animation-text--inner swiper">
     <div class="swiper-wrapper">
       {% for block in section.blocks %}
+        {% if block.settings.text != blank %}
+          <div class="swiper-slide section_animation-text--content">
+            <p>{{ block.settings.text }}</p>
+            {% unless forloop.first %}
+            {% render 'icon-star-marquee' %}
+            {% endunless %}
+          </div>
+        {% endif %}
+      {% endfor %}
+       {% for block in section.blocks %}
+        {% if block.settings.text != blank %}
+          <div class="swiper-slide section_animation-text--content">
+            <p>{{ block.settings.text }}</p>
+            {% unless forloop.first %}
+            {% render 'icon-star-marquee' %}
+            {% endunless %}
+          </div>
+        {% endif %}
+      {% endfor %}
+       {% for block in section.blocks %}
         {% if block.settings.text != blank %}
           <div class="swiper-slide section_animation-text--content">
             <p>{{ block.settings.text }}</p>

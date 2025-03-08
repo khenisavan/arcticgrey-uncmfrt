@@ -99,6 +99,9 @@ class CartItems extends HTMLElement {
             if (targetElement && sourceElement) {
               targetElement.replaceWith(sourceElement);
             }
+             setTimeout(function () {
+                cartslider();
+              }, 1500);
           }
         })
         .catch((e) => {
@@ -206,7 +209,9 @@ class CartItems extends HTMLElement {
         } else if (document.querySelector('.cart-item') && cartDrawerWrapper) {
           trapFocus(cartDrawerWrapper, document.querySelector('.cart-item__name'));
         }
-
+              setTimeout(function () {
+                cartslider();
+              }, 100);
         publish(PUB_SUB_EVENTS.cartUpdate, { source: 'cart-items', cartData: parsedState, variantId: variantId });
       })
       .catch(() => {
@@ -216,6 +221,11 @@ class CartItems extends HTMLElement {
       })
       .finally(() => {
         this.disableLoading(line);
+        document.addEventListener('DOMContentLoaded', function () {     
+          setTimeout(function() {
+            cartslider();
+          }, 2000); 
+        });
       });
   }
 

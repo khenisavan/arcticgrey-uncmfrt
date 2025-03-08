@@ -59,7 +59,8 @@
 
         <div class="title-right">
           <a href="#">View All Bundles</a>
-          <div class="custom--navigation tab-sect">
+          {% for block in section.blocks %}
+          <div id="Slider-{{ block.id }}" class="custom--navigation tab-sect  {% unless forloop.first %} hidden{% endunless %}"    data-tab="{{ block.settings.tab_title  | handle }}">
             <button class="prevnew">
               <svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5.40179 0.182292L0.6875 4.55729C0.5625 4.67882 0.5 4.82639 0.5 5C0.5 5.17361 0.5625 5.32118 0.6875 5.44271L5.40179 9.81771C5.72321 10.0608 6.02679 10.0608 6.3125 9.81771C6.5625 9.50521 6.5625 9.21007 6.3125 8.93229L2.75 5.625H11.8571C12.25 5.59028 12.4643 5.38194 12.5 5C12.4643 4.61806 12.25 4.40972 11.8571 4.375H2.75L6.3125 1.06771C6.5625 0.789931 6.5625 0.494792 6.3125 0.182292C6.02679 -0.0607639 5.72321 -0.0607639 5.40179 0.182292Z" fill="#1B1F23"></path>
@@ -71,6 +72,9 @@
               </svg>
             </button>
           </div>
+ {% endfor %}
+        
+          
         </div>
       </div>
 
@@ -87,38 +91,40 @@
           >
             <div class="prevnew hidden"></div>
             <div class="nextnew hidden"></div>
-            <ul
-              class=" block_card-products"
-              role="list"
-              aria-label="{{ 'general.slider.name' | t }}"
-            >
-              {%- for product in block.settings.collection.products limit: block.settings.products_to_show -%}
-                <li
-                  id="Slide-{{ section.id }}-{{ forloop.index }}"
-                  class="collection-product-grid"
-                  {% if settings.animations_reveal_on_scroll %}
-                    data-cascade
-                    style="--animation-order: {{ forloop.index }};"
-                  {% endif %}
-                >
-                  {% render 'card-product',
-                    card_product: product,
-                    media_aspect_ratio: section.settings.image_ratio,
-                    show_secondary_image: section.settings.show_secondary_image,
-                    show_vendor: section.settings.show_vendor,
-                    show_rating: section.settings.show_rating,
-                    show_quick_add: section.settings.enable_quick_add,
-                    section_id: section.id
-                  %}
-                </li>
-              {%- else -%}
-                {%- for i in (1..4) -%}
-                  <li class="{% if block.settings.columns_desktop == 5 %}col-md-20 {% elsif block.settings.columns_desktop == 4 %}col-md-3{% elsif block.settings.columns_desktop == 3 %}col-md-4{% elsif block.settings.columns_desktop == 2 %}col-md-6{% endif %} col-6">
-                    {% render 'card-product', show_vendor: section.settings.show_vendor %}
+            <div class="swiper swiper-bundle">
+              <ul
+                class=" block_card-products swiper-wrapper"
+                role="list"
+                aria-label="{{ 'general.slider.name' | t }}"
+              >
+                {%- for product in block.settings.collection.products limit: block.settings.products_to_show -%}
+                  <li
+                    id="Slide-{{ section.id }}-{{ forloop.index }}"
+                    class="collection-product-grid swiper-slide"
+                    {% if settings.animations_reveal_on_scroll %}
+                      data-cascade
+                      style="--animation-order: {{ forloop.index }};"
+                    {% endif %}
+                  >
+                    {% render 'card-product',
+                      card_product: product,
+                      media_aspect_ratio: section.settings.image_ratio,
+                      show_secondary_image: section.settings.show_secondary_image,
+                      show_vendor: section.settings.show_vendor,
+                      show_rating: section.settings.show_rating,
+                      show_quick_add: section.settings.enable_quick_add,
+                      section_id: section.id
+                    %}
                   </li>
+                {%- else -%}
+                  {%- for i in (1..4) -%}
+                    <li class="{% if block.settings.columns_desktop == 5 %}col-md-20 {% elsif block.settings.columns_desktop == 4 %}col-md-3{% elsif block.settings.columns_desktop == 3 %}col-md-4{% elsif block.settings.columns_desktop == 2 %}col-md-6{% endif %} col-6">
+                      {% render 'card-product', show_vendor: section.settings.show_vendor %}
+                    </li>
+                  {%- endfor -%}
                 {%- endfor -%}
-              {%- endfor -%}
-            </ul>
+              </ul>
+            </div>
           </div>
         {% endfor %}
       </div>
@@ -137,56 +143,79 @@
   {% endfor %}
 </style>
 
-<script defer="defer">
+<script
+  defer="defer"
+>
      document.addEventListener("DOMContentLoaded", function() {
-      $(".tab_click_list").on("click" , function(){
-        $(this).addClass("active").siblings().removeClass("active");
-       let tabName = $(this).attr("data-id");
-        $(".collection_slider .product-grid[data-tab ="+tabName+"]").addClass("active").siblings().removeClass("active");
-        $('.block_card-products').slick('setPosition');
-      })
-  $(".tab-sect .prevnew").on("click" , function(){
-    $(".block_product-list-slider.active").find(".prevnew").trigger("click")
-  })
-  $(".tab-sect .nextnew").on("click" , function(){
-    $(".block_product-list-slider.active").find(".nextnew").trigger("click")
-  })
 
-       {% for block in section.blocks %}
-     $("#Slider-{{ block.id }} .block_card-products").slick({
-      infinite: true,
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      dots:false,
-      arrows:true,
-      prevArrow: $(" #Slider-{{ block.id }} .prevnew"),
-      nextArrow: $(" #Slider-{{ block.id }} .nextnew"),
-                responsive: [
-          {
-            breakpoint: 1499,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 1,
-            },
-          },
-          {
-            breakpoint: 989,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1,
-            },
-          },
-    {
-            breakpoint: 749,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
+
+
+document.querySelectorAll('.tab_click_list').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+        tab.classList.add('active');
+        Array.from(tab.parentNode.children).forEach(function(sibling) {
+            if (sibling !== tab) {
+                sibling.classList.remove('active');
             }
-          }
-        ]
-    });
+        });
 
-       {% endfor %}
+        let tabName = tab.getAttribute('data-id');
+
+        document.querySelectorAll('.collection_slider .product-grid').forEach(function(grid) {
+            if (grid.getAttribute('data-tab') === tabName) {
+                grid.classList.add('active');
+            } else {
+                grid.classList.remove('active');
+            }
+        });
+
+     // document.querySelectorAll('.custom--navigation').forEach(function(grid) {
+     //        if (grid.getAttribute('data-tab') === tabName) {
+     //            grid.classList.add('hidden');
+     //          console.log
+     //        } else {
+     //            grid.classList.remove('hidden');
+     //        }
+     //    });
+      
+    });
+});
+
+{% for block in section.blocks %}
+    var swiperElements = document.querySelector(`#Slider-{{ block.id }} .block_card-products`);
+    if (swiperElements) {
+        new Swiper(`#Slider-{{ block.id }} .swiper-bundle`, {
+            infinite: true,
+            slidesPerView: 4,
+            slidesPerGroup: 1,
+            spaceBetween: 10,
+            navigation: {
+                prevEl: `.prevnew`,
+                nextEl: `.nextnew`
+            },
+            breakpoints: {
+                320: {
+                    slidesPerView: 1.2,
+                    slidesPerGroup: 1,
+                },
+               575: {
+                    slidesPerView: 2,
+                    slidesPerGroup: 1,
+                },
+                1280: {
+                    slidesPerView: 3,
+                    slidesPerGroup: 1,
+                },                
+              
+                1400: {
+                    slidesPerView: 4,
+                    slidesPerGroup: 1,
+                }         
+
+            }
+        });
+    }
+{% endfor %}
     })
 </script>
 

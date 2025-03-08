@@ -182,16 +182,16 @@ function focusVisiblePolyfill() {
 }
 
 function pauseAllMedia() {
-  document.querySelectorAll('.js-youtube').forEach((video) => {
-    video.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
-  });
-  document.querySelectorAll('.js-vimeo').forEach((video) => {
-    video.contentWindow.postMessage('{"method":"pause"}', '*');
-  });
-  document.querySelectorAll('video').forEach((video) => video.pause());
-  document.querySelectorAll('product-model').forEach((model) => {
-    if (model.modelViewerUI) model.modelViewerUI.pause();
-  });
+  // document.querySelectorAll('.js-youtube').forEach((video) => {
+  //   video.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
+  // });
+  // document.querySelectorAll('.js-vimeo').forEach((video) => {
+  //   video.contentWindow.postMessage('{"method":"pause"}', '*');
+  // });
+  // document.querySelectorAll('video').forEach((video) => video.pause());
+  // document.querySelectorAll('product-model').forEach((model) => {
+  //   if (model.modelViewerUI) model.modelViewerUI.pause();
+  // });
 }
 
 function removeTrapFocus(elementToFocus = null) {
@@ -1299,3 +1299,38 @@ const $sample_atc_submit_event = async function($form_data){
     console.error($atc_success_result);
   }
 }
+
+function cartslider() {
+  var mySwiper = new Swiper(".cart-mySwiper", {
+    slidesPerView: 2.3,
+      spaceBetween: 12,
+    pagination: {
+      el: ".swiper-pagination",
+      type: "fraction",
+    },
+    navigation: {
+      nextEl: ".drawer-collection-next",
+      prevEl: ".drawer-collection-prev",
+    },
+     breakpoints: {
+    
+      320: {
+        slidesPerView: 1.3,
+        spaceBetween: 10,
+      }, 
+  
+    
+      1024: {
+        slidesPerView: 2.3,
+        spaceBetween: 12,
+      },
+
+    },
+  });
+}
+document.addEventListener('DOMContentLoaded', function () {
+  cartslider();
+});
+window.onload = function() {
+      document.body.classList.remove('display-hidden');
+};

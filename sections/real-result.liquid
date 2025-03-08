@@ -1,190 +1,414 @@
-{{ 'component-card.css' | asset_url | stylesheet_tag }}
-{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'real-result.css' | asset_url | stylesheet_tag }}
 
-{{ 'component-slider.css' | asset_url | stylesheet_tag }}
-{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{% style %}
+  @media (min-width: 990px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.desktop_padding_top }}px;
+      padding-bottom: {{ section.settings.desktop_padding_bottom }}px;
+    }
+  }
+  @media (max-width: 989px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.mobile_padding_top }}px;
+      padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+    }
+  }
+{% endstyle %}
 
-{{ 'section-featured-collection.css' | asset_url | stylesheet_tag }}
-
-{% if section.settings.image_shape == 'blob' %}
-  {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
-{%- endif -%}
-
-{%- if section.settings.enable_quick_add -%}
-  {{ 'quick-add.css' | asset_url | stylesheet_tag }}
-  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
-  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
-{%- endif -%}
-
-{%- liquid
-  assign products_to_display = section.settings.collection.all_products_count
-
-  if section.settings.collection.all_products_count > section.settings.products_to_show
-    assign products_to_display = section.settings.products_to_show
-    assign more_in_collection = true
-  endif
-
-  assign columns_mobile_int = section.settings.columns_mobile | plus: 0
-  assign show_mobile_slider = false
-  if section.settings.swipe_on_mobile and products_to_display > columns_mobile_int
-    assign show_mobile_slider = true
-  endif
-
-  assign show_desktop_slider = false
-  if section.settings.enable_desktop_slider and products_to_display > section.settings.columns_desktop
-    assign show_desktop_slider = true
-  endif
--%}
-
-<div class="color-{{ section.settings.color_scheme }} isolate gradient section_block-real">
-  <div class="collection featured-collection--wrapper section_real-video section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}">
-    <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider{% endif %}">
-      <div class="featured--collection-hedaing-wrapper">
-        {%- if section.settings.description != blank -%}
-          <p>{{ section.settings.description }}</p>
-        {%- endif -%}
-        {%- if section.settings.title != blank -%}
-          <h2 class="title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-            {{ section.settings.title }}
-          </h2>
-        {%- endif -%}
-        <div class="custom--navigation">
-          <button class="prev">
-            <svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<div class="section__product-video-slider-main {{ section.id }} section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} isolate gradient">
+  <div class="{% if section.settings.full_width == false %} page-width {% endif %} section__product-video-slider-wrapper">
+    <div class="section__product-video-slider-inner">
+      <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider{% endif %}">
+        <div class="featured--collection-hedaing-wrapper">
+          <p>Trusted & Proven by Science</p>
+          {%- if section.settings.title != blank -%}
+            <h2 class="title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+              {{ section.settings.title }}
+            </h2>
+          {%- endif -%}
+          <div class="custom--navigation">
+            <button class="prev slider-button slider-button--prev swiper-button-prev-{{ section.id }}">
+              <svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M5.40179 0.182292L0.6875 4.55729C0.5625 4.67882 0.5 4.82639 0.5 5C0.5 5.17361 0.5625 5.32118 0.6875 5.44271L5.40179 9.81771C5.72321 10.0608 6.02679 10.0608 6.3125 9.81771C6.5625 9.50521 6.5625 9.21007 6.3125 8.93229L2.75 5.625H11.8571C12.25 5.59028 12.4643 5.38194 12.5 5C12.4643 4.61806 12.25 4.40972 11.8571 4.375H2.75L6.3125 1.06771C6.5625 0.789931 6.5625 0.494792 6.3125 0.182292C6.02679 -0.0607639 5.72321 -0.0607639 5.40179 0.182292Z" fill="#1B1F23"></path>
             </svg>
-          </button>
-          <button class="next">
-            <svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            </button>
+            <button class="next slider-button slider-button--next swiper-button-next-{{ section.id }}">
+                <svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M7.59821 0.182292L12.3125 4.55729C12.4375 4.67882 12.5 4.82639 12.5 5C12.5 5.17361 12.4375 5.32118 12.3125 5.44271L7.59821 9.81771C7.27679 10.0608 6.97321 10.0608 6.6875 9.81771C6.4375 9.50521 6.4375 9.21007 6.6875 8.93229L10.25 5.625H1.14286C0.75 5.59028 0.535714 5.38194 0.5 5C0.535714 4.61806 0.75 4.40972 1.14286 4.375H10.25L6.6875 1.06771C6.4375 0.789931 6.4375 0.494792 6.6875 0.182292C6.97321 -0.0607639 7.27679 -0.0607639 7.59821 0.182292Z" fill="#1B1F23"></path>
             </svg>
-          </button>
-        </div>
-      </div>
-      <a href="/collections/all">View All</a>
-    </div>
-
-    <div class="section_video-section swiper">
-      <div class="section_shop-video swiper-wrapper">
-        {% for block in section.blocks %}
-          <div class="section_shop-video-inner swiper-slide">
-            <div class="section_video">
-              {% if block.settings.video != blank %}
-                <video
-                  muted
-                  autoplay
-                  playsinline
-                  loop
-                  preload="none"
-                  {% if block.settings.img != blank %}
-                  poster="{{ block.settings.img | img_url:'master' }}"
-                  {% endif %}
-                >
-                  <source src="{{ block.settings.video.sources[1].url }}" type="video/mp4">
-                </video>
-              {% endif %}
-            </div>
-            {% assign selected_product = all_products[block.settings.product] %}
-            {% if selected_product == blank %}
-              {% assign selected_product = all_products[section.settings.product] %}
-            {% endif %}
-            <div class="section_video-title">
-              <div class="section_text-left">
-                <div class="section_video-image">
-                  <img src="{{ selected_product.featured_image | img_url:'70x70' }}">
-                </div>
-                <div class="section_video-text">
-                  <p class="pro-title">
-                    {% if selected_product != blank %}
-                      {{ selected_product.title }}
-                    {% endif %}
-                  </p>
-                  <p class="pro-price">
-                    {% if selected_product != blank %}
-                      {{ selected_product.selected_or_first_available_variant.price | money }}
-                    {% endif %}
-                  </p>
-                </div>
-              </div>
-              <div class="section_left-arrow">
-                
-                {% render 'product-form-plus', section_id: section.id, card_product: selected_product %}
-              </div>
-            </div>
+            </button>
           </div>
+        </div>
+
+        <div class="center collection__view-all{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+          <a
+            href="/collections/all"
+            class="link"
+            aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: section.settings.collection.title | escape }}"
+          >
+            {{ 'sections.featured_collection.view_all' | t }}
+          </a>
+        </div>
+
+        {%- if section.settings.description != blank
+          or section.settings.show_description
+          and section.settings.collection.description != empty
+        -%}
+          <div class="collection__description {{ section.settings.description_style }} rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+            {%- if section.settings.show_description -%}
+              {{ section.settings.collection.description }}
+            {%- else -%}
+              {{ section.settings.description -}}
+            {%- endif %}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+    <div class="section__product-video-slider-list-wrapper swiper-container overflow-hidden w-full h-full">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          {% case block.type == 'Column' %}
+            {% when 'column' %}
+              <div class="swiper-slide">
+                <div class="section__product-video-slider-list-inner w-full h-full">
+                  {% if block.settings.video != blank %}
+                    <div class="section__product-video-slider-media tertiary-border-radius relative overflow-hidden h-full">
+                      {{
+                        block.settings.video
+                        | video_tag:
+                          image_size: '1024x',
+                          autoplay: true,
+                          loop: section.settings.enable_video_looping,
+                          controls: false,
+                          class: 'h-full w-full object-cover block absolute inset-0 section__product-video-slider-list-inner'
+                      }}
+                    </div>
+                  {% endif %}
+                  {% if block.settings.featured_product != blank %}
+                    <div class="section__product-video-slider--featured-product flex items-center gap-10 justify-between tertiary-border-radius">
+                      {% assign product = block.settings.featured_product %}
+                      <div class="flex items-center">
+                        {% if product.featured_image != blank %}
+                          <div class="section__featured-product-image flex items-center">
+                            <img src="{{ product.featured_image | img_url: 'master' }}" class="block w-full h-full">
+                          </div>
+                        {% endif %}
+                        <div class="section__featured-product-content flex flex-direction-column">
+                          {% if product.title != blank %}
+                            <a href="{{ product.url }}" title="{{ product.title }}" class="small_body">
+                              {{ product.title }}
+                            </a>
+                          {% endif %}
+                          <span class="section__featured-product-price extra_body font-weight-700">
+                            {% if product.price_varies %}
+                              {{ product.price_min | money }}
+                            {% else %}
+                              {{ product.price | money }}
+                            {% endif %}
+                          </span>
+                        </div>
+                      </div>
+                      <div class="section__featured-product-add-to-cart">
+                        {%- if product.variants.size >= 0 -%}
+                          <modal-opener data-modal="#QuickAdd-{{ product.id }}">
+                            <button
+                              id="{{ product.id }}-submit"
+                              type="submit"
+                              name="add"
+                              class=" button button--full-width section__product-video-slider-btn"
+                              aria-haspopup="dialog"
+                              aria-labelledby="{{ product.id }}-submit title-{{ section.id }}-{{ product.id }}"
+                              data-product-url="{{ product.url }}"
+                            >
+                              <svg
+                                width="32"
+                                height="32"
+                                viewBox="0 0 32 32"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <circle cx="16" cy="16" r="16" fill="#1B1F23"/>
+                                <path d="M21.3125 15.75C21.276 16.151 21.0573 16.3698 20.6562 16.4062H16.2812V20.7812C16.2448 21.1823 16.026 21.401 15.625 21.4375C15.224 21.401 15.0052 21.1823 14.9688 20.7812V16.4062H10.5938C10.1927 16.3698 9.97396 16.151 9.9375 15.75C9.97396 15.349 10.1927 15.1302 10.5938 15.0938H14.9688V10.7188C15.0052 10.3177 15.224 10.099 15.625 10.0625C16.026 10.099 16.2448 10.3177 16.2812 10.7188V15.0938H20.6562C21.0573 15.1302 21.276 15.349 21.3125 15.75Z" fill="white"/>
+                              </svg>
+
+                              {%- render 'loading-spinner' -%}
+                            </button>
+                          </modal-opener>
+                          <quick-add-modal id="QuickAdd-{{ product.id }}" class="quick-add-modal">
+                            <div
+                              role="dialog"
+                              aria-label="{{ 'products.product.choose_product_options' | t: product_name: product.title | escape }}"
+                              aria-modal="true"
+                              class="quick-add-modal__content global-settings-popup"
+                              tabindex="-1"
+                            >
+                              <button
+                                id="ModalClose-{{ product.id }}"
+                                type="button"
+                                class="quick-add-modal__toggle"
+                                aria-label="{{ 'accessibility.close' | t }}"
+                              >
+                                {{- 'icon-close.svg' | inline_asset_content -}}
+                              </button>
+                              <div id="QuickAddInfo-{{ product.id }}" class="quick-add-modal__content-info"></div>
+                            </div>
+                          </quick-add-modal>
+                        {%- else -%}
+                          <product-form data-section-id="{{ section.id }}">
+                            {%- form 'product',
+                              product,
+                              id: product.id,
+                              class: 'form',
+                              novalidate: 'novalidate',
+                              data-type: 'add-to-cart-form'
+                            -%}
+                              <input
+                                type="hidden"
+                                name="id"
+                                value="{{ product.selected_or_first_available_variant.id }}"
+                                class="product-variant-id"
+                                {% if product.selected_or_first_available_variant.available == false %}
+                                  disabled
+                                {% endif %}
+                              >
+                              <button
+                                id="{{ product.id }}-submit"
+                                type="submit"
+                                name="add"
+                                class="button button--full-width"
+                                aria-haspopup="dialog"
+                                aria-labelledby="{{ product.id }}-submit title-{{ section.id }}-{{ product.id }}"
+                                aria-live="polite"
+                                data-sold-out-message="true"
+                                {% if product.selected_or_first_available_variant.available == false %}
+                                  disabled
+                                {% endif %}
+                              >
+                                <span>
+                                  {%- if product.selected_or_first_available_variant.available -%}
+                                    <svg
+                                      width="32"
+                                      height="32"
+                                      viewBox="0 0 32 32"
+                                      fill="none"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <circle cx="16" cy="16" r="16" fill="#1B1F23"/>
+                                      <path d="M21.3125 15.75C21.276 16.151 21.0573 16.3698 20.6562 16.4062H16.2812V20.7812C16.2448 21.1823 16.026 21.401 15.625 21.4375C15.224 21.401 15.0052 21.1823 14.9688 20.7812V16.4062H10.5938C10.1927 16.3698 9.97396 16.151 9.9375 15.75C9.97396 15.349 10.1927 15.1302 10.5938 15.0938H14.9688V10.7188C15.0052 10.3177 15.224 10.099 15.625 10.0625C16.026 10.099 16.2448 10.3177 16.2812 10.7188V15.0938H20.6562C21.0573 15.1302 21.276 15.349 21.3125 15.75Z" fill="white"/>
+                                    </svg>
+                                  {%- endif -%}
+                                </span>
+                                {%- render 'loading-spinner' -%}
+                              </button>
+                            {%- endform -%}
+                          </product-form>
+                        {%- endif -%}
+                      </div>
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+          {% endcase %}
         {% endfor %}
       </div>
     </div>
-
-    {%- if section.settings.show_view_all and more_in_collection -%}
-      <div class="center collection__view-all{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-        <a
-          href="{{ section.settings.collection.url }}"
-          class="{% if section.settings.view_all_style == 'link' %}link underlined-link{% elsif section.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
-          aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: section.settings.collection.title | escape }}"
-        >
-          {{ 'sections.featured_collection.view_all' | t }}
-        </a>
-      </div>
-    {%- endif -%}
   </div>
 </div>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const videoSlides = document.querySelectorAll(".section__product-video-slider-wrapper .video-slide video");
+    const slickContainer = document.querySelector(".section__product-video-slider-wrapper video.section__product-video-slider-list-inner");
+
+    function pauseAllVideos() {
+        videoSlides.forEach(videos => {
+            videos.pause();
+        });
+    }
+
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const VideoCarousel = document.querySelector('.section__product-video-slider-list-wrapper');
+    
+    if (VideoCarousel) {
+        var swiper = new Swiper(VideoCarousel, {
+            slidesPerView: 5.2,
+            spaceBetween: 0,
+            centeredSlides: true,
+           initialSlide: 3,
+          // loop:true,
+            navigation: {
+                nextEl: `.swiper-button-next-{{ section.id }}`,
+                prevEl: `.swiper-button-prev-{{ section.id }}`, 
+            },
+            on: {
+              init: function () {
+    document.querySelectorAll('.section__product-video-slider-wrapper video').forEach(videos => {
+                        videos.pause();
+                        videos.currentTime = 0; // Reset video to start
+                    })
+                
+                    document.querySelector(".swiper-slide-active video").play()
+                
+                },
+                slideChangeTransitionStart: function () {
+                   document.querySelector(".swiper-slide-active video").play()
+                    console.log("Transition started... Pausing all videos.");
+                   document.querySelector(".swiper-slide-active video").play()
+                    document.querySelectorAll('.section__product-video-slider-wrapper video').forEach(videos => {
+                        videos.pause();
+                        videos.currentTime = 0; // Reset video to start
+                    });
+                   document.querySelector(".swiper-slide-active video").play()
+                },
+
+                slideChangeTransitionEnd: function () {
+                    console.log("Transition ended... Playing active video.");
+              
+                }
+            },
+            breakpoints: {
+                320: { slidesPerView: 1.3, spaceBetween: 0 },
+                569: { slidesPerView: 2, spaceBetween: 0 },
+                768: { slidesPerView: 3, spaceBetween: 0 },
+                992: { slidesPerView: 4, spaceBetween: 0 },
+                1199: { slidesPerView: 4.3, spaceBetween: 0 },
+                1300: { slidesPerView: 5.3, spaceBetween: 0, centeredSlides: true }
+            }
+        });
+
+    } else {
+        console.log("Video carousel not found.");
+    }
+});
+</script>
 
 {% schema %}
 {
-  "name": "Real result",
+  "name": "Product Video Slider",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
+    },
     {
       "type": "inline_richtext",
       "id": "title",
-      "default": "Featured collection",
-      "label": "t:sections.featured-collection.settings.title.label"
+      "default": "Featured Product",
+      "label": "Heading"
     },
     {
       "type": "select",
       "id": "heading_size",
       "options": [
         {
+          "value": "h4",
+          "label": "Small"
+        },
+        {
+          "value": "h3",
+          "label": "Medium"
+        },
+        {
+          "value": "primary_h2",
+          "label": "Large"
+        },
+        {
           "value": "h2",
-          "label": "t:sections.all.heading_size.options__1.label"
+          "label": "Extra Large"
         },
         {
           "value": "h1",
-          "label": "t:sections.all.heading_size.options__2.label"
-        },
-        {
-          "value": "h0",
-          "label": "t:sections.all.heading_size.options__3.label"
+          "label": "Extra extra Large"
         }
       ],
-      "default": "h1",
-      "label": "t:sections.all.heading_size.label"
+      "default": "primary_h2",
+      "label": "Heading Size"
     },
     {
-      "type": "text",
-      "id": "description",
-      "label": "Sub heading"
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Desktop padding"
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Desktop Padding Top",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Desktop Padding Bottom",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Mobile padding"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Padding Top",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Padding Bottom",
+      "default": 16
     }
   ],
   "blocks": [
     {
-      "type": "block",
-      "name": "block",
+      "type": "column",
+      "name": "Column",
       "settings": [
+        {
+          "type": "header",
+          "content": "Featured Video"
+        },
         {
           "type": "video",
           "id": "video",
-          "label": "Video url"
+          "label": "Video"
         },
         {
-          "type": "image_picker",
-          "id": "img",
-          "label": "Poster Image"
+          "type": "header",
+          "content": "Featured Product"
         },
         {
           "type": "product",
-          "id": "product",
+          "id": "featured_product",
           "label": "Product"
         }
       ]
@@ -192,7 +416,12 @@
   ],
   "presets": [
     {
-      "name": "Real result"
+      "name": "Product Video Slider",
+      "blocks": [
+        {
+          "type": "column"
+        }
+      ]
     }
   ]
 }

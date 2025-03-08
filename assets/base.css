@@ -1252,7 +1252,7 @@ button.shopify-payment-button__button--unbranded {
   background-color: rgba(var(--color-button), var(--alpha-button-background));
 }
 
-.button:before,
+
 .shopify-challenge__button:before,
 .customer button:before,
 .shopify-payment-button__button--unbranded:before {
@@ -1268,7 +1268,7 @@ button.shopify-payment-button__button--unbranded {
     var(--shadow-blur-radius) rgba(var(--color-shadow), var(--shadow-opacity));
 }
 
-.button:after,
+
 .shopify-challenge__button:after,
 .customer button:after,
 .shopify-payment-button__button--unbranded:after {
@@ -3737,6 +3737,10 @@ img {
   border-radius: 8px;
 
   max-width: 1520px;
+}
+.display-hidden{
+  opacity:0;
+  visibility:hidden;
 }
 .list-menu--inline {
   justify-content: center;

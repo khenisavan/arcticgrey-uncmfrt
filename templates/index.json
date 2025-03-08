@@ -374,79 +374,106 @@
     "real_result_LATya4": {
       "type": "real-result",
       "blocks": {
-        "block_NEqaeV": {
-          "type": "block",
-          "settings": {
-            "video": "shopify://files/videos/video-1.mp4",
-            "product": "complete-sleep-bundle"
-          }
-        },
-        "block_kEP8HB": {
-          "type": "block",
-          "settings": {
-            "video": "shopify://files/videos/video-2.mp4",
-            "product": "grass-fed-whey-protein-isolate-powder"
-          }
-        },
-        "block_dN8B38": {
-          "type": "block",
-          "settings": {
-            "video": "shopify://files/videos/video-3.mp4",
-            "product": "magnesium-l-threonate"
-          }
-        },
-        "block_mMejKX": {
-          "type": "block",
+        "column_KQTJHH": {
+          "type": "column",
           "settings": {
             "video": "shopify://files/videos/video-4.mp4",
-            "product": "male-hormone-support-bundle"
+            "featured_product": "pr-lotion-starter-kit"
           }
         },
-        "block_gEPT3K": {
-          "type": "block",
+        "column_Bt9nmb": {
+          "type": "column",
           "settings": {
-            "video": "shopify://files/videos/video-5.mp4",
-            "product": "omega-3"
+            "video": "shopify://files/videos/video-1.mp4",
+            "featured_product": "complete-sleep-bundle"
           }
         },
-        "block_zBeeT3": {
-          "type": "block",
+        "column_fh9yxX": {
+          "type": "column",
           "settings": {
-            "video": "shopify://files/videos/video-6.mp4",
-            "product": "pr-lotion-starter-kit"
+            "video": "shopify://files/videos/video-2.mp4",
+            "featured_product": "grass-fed-whey-protein-isolate-powder"
           }
         },
-        "block_XUUpRE": {
-          "type": "block",
+        "column_7aWrHP": {
+          "type": "column",
           "settings": {
-            "video": "shopify://files/videos/video-6.mp4",
-            "product": "tongkat-fadogia-60-day-supply"
+            "video": "shopify://files/videos/video-3.mp4",
+            "featured_product": "magnesium-l-threonate"
+          }
+        },
+        "column_Egqf9d": {
+          "type": "column",
+          "settings": {
+            "video": "shopify://files/videos/video-4.mp4",
+            "featured_product": "pr-lotion-starter-kit"
+          }
+        },
+        "column_Vh7xUW": {
+          "type": "column",
+          "settings": {
+            "video": "shopify://files/videos/video-2.mp4",
+            "featured_product": "grass-fed-whey-protein-isolate-powder"
+          }
+        },
+        "column_yDx4VJ": {
+          "type": "column",
+          "settings": {
+            "video": "shopify://files/videos/video-5_add64e80-3b8b-4e39-af7a-fcdd8fd9043f.mp4",
+            "featured_product": "pr-lotion-starter-kit"
+          }
+        },
+        "column_mQyWML": {
+          "type": "column",
+          "settings": {
+            "video": "shopify://files/videos/-f1d3-45a4-a2a8-c462f7e5812d.mp4",
+            "featured_product": "grass-fed-whey-protein-isolate-powder"
           }
         }
       },
       "block_order": [
-        "block_NEqaeV",
-        "block_kEP8HB",
-        "block_dN8B38",
-        "block_mMejKX",
-        "block_gEPT3K",
-        "block_zBeeT3",
-        "block_XUUpRE"
+        "column_KQTJHH",
+        "column_Bt9nmb",
+        "column_fh9yxX",
+        "column_7aWrHP",
+        "column_Egqf9d",
+        "column_Vh7xUW",
+        "column_yDx4VJ",
+        "column_mQyWML"
       ],
       "settings": {
+        "full_width": true,
         "title": "Real People. Real Results.",
         "heading_size": "h1",
-        "description": "Trusted & Proven by Science"
+        "color_scheme": "scheme-2",
+        "desktop_padding_top": 80,
+        "desktop_padding_bottom": 80,
+        "mobile_padding_top": 60,
+        "mobile_padding_bottom": 60
       }
     },
     "tab_collection_RCrjqx": {
       "type": "tab-collection",
       "blocks": {
+        "tab_Xm7hUQ": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Sleep",
+            "collection": "sleep",
+            "image_count": "0",
+            "products_to_show": 5,
+            "columns_desktop": 3,
+            "padding_top": 40,
+            "padding_bottom": 40,
+            "mpadding_top": 40,
+            "mpadding_bottom": 40
+          }
+        },
         "tab_4EhCHz": {
           "type": "tab",
           "settings": {
-            "tab_title": "",
-            "collection": "frontpage",
+            "tab_title": "Cognitive Function",
+            "collection": "cognitive-function",
             "image_count": "0",
             "products_to_show": 18,
             "columns_desktop": 5,
@@ -455,15 +482,61 @@
             "mpadding_top": 40,
             "mpadding_bottom": 40
           }
+        },
+        "tab_Ny6xRK": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Foundational Health",
+            "collection": "foundational-health",
+            "image_count": "0",
+            "products_to_show": 5,
+            "columns_desktop": 3,
+            "padding_top": 40,
+            "padding_bottom": 40,
+            "mpadding_top": 40,
+            "mpadding_bottom": 40
+          }
+        },
+        "tab_x8Fahe": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Athletic Performance",
+            "collection": "athletic-performance",
+            "image_count": "0",
+            "products_to_show": 5,
+            "columns_desktop": 3,
+            "padding_top": 40,
+            "padding_bottom": 40,
+            "mpadding_top": 40,
+            "mpadding_bottom": 40
+          }
+        },
+        "tab_wxWy7a": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Hormone Support",
+            "collection": "hormone-support",
+            "image_count": "0",
+            "products_to_show": 7,
+            "columns_desktop": 3,
+            "padding_top": 40,
+            "padding_bottom": 40,
+            "mpadding_top": 40,
+            "mpadding_bottom": 40
+          }
         }
       },
       "block_order": [
-        "tab_4EhCHz"
+        "tab_Xm7hUQ",
+        "tab_4EhCHz",
+        "tab_Ny6xRK",
+        "tab_x8Fahe",
+        "tab_wxWy7a"
       ],
       "settings": {
         "color_scheme": "",
         "load_css": true,
-        "show_tab_title": false,
+        "show_tab_title": true,
         "title": "Featured collection",
         "heading_size": "h1",
         "description": "",
